@@ -5,6 +5,21 @@
 @tailwind utilities;
 
 @layer base {
+  /* Floating animation for gradient blob */
+  @keyframes float-up-down {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  .animate-float-blob {
+    animation: float-up-down 4s ease-in-out infinite;
+  }
+
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
