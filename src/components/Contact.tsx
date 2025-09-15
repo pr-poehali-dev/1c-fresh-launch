@@ -26,12 +26,26 @@ export default function Contact() {
       if (botInfo.success) {
         toast.success('Бот активен: ' + botInfo.botInfo?.first_name);
         
-        // Теперь попробуем отправить тестовое сообщение
-        const result = await telegramBot.testMessage();
-        if (result.success) {
-          toast.success('✅ Тестовое сообщение отправлено!');
+        // Получить доступные чаты
+        const updates = await telegramBot.getUpdates();
+        if (updates.success && updates.updates?.length) {
+          console.log('📋 Доступные чаты:', updates.updates);
+          toast.success(`Найдено чатов: ${updates.updates.length}. Проверьте консоль для chat_id`);
+          
+          // Показать chat_id в консоли
+          updates.updates.forEach((chat: any, index: number) => {
+            console.log(`💬 Чат ${index + 1}:`, {
+              chatId: chat.chatId,
+              тип: chat.chatType,
+              название: chat.chatTitle,
+              от: chat.from
+            });
+          });
+          
+          const chatIds = updates.updates.map((chat: any) => chat.chatId).join(', ');
+          toast.info(`Chat IDs: ${chatIds}`);
         } else {
-          toast.error('❌ Ошибка отправки: ' + result.error);
+          toast.warning('❗ Нет доступных чатов. Напишите боту сообщение сначала!');
         }
       } else {
         toast.error('❌ Бот недоступен: ' + botInfo.error);

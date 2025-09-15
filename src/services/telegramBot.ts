@@ -170,6 +170,41 @@ ${data.message ? `💬 <b>Комментарий:</b> ${data.message}` : ""}
     const testText = `🧪 Тест бота\n\nВремя: ${new Date().toLocaleString('ru-RU')}\nБот работает корректно!`;
     return this.sendMessage(testText);
   }
+
+  // Получить доступные чаты (последние сообщения)
+  async getUpdates(): Promise<{ success: boolean; updates?: any[]; error?: string }> {
+    try {
+      console.log('📥 Получение обновлений:', `${this.baseUrl}/getUpdates`);
+      const response = await fetch(`${this.baseUrl}/getUpdates?limit=10`);
+      const result = await response.json();
+
+      console.log('📨 Обновления от Telegram:', result);
+
+      if (!response.ok) {
+        throw new Error(result.description || 'Ошибка получения обновлений');
+      }
+
+      // Извлечь chat_id из сообщений
+      const chatIds = result.result
+        .filter((update: any) => update.message?.chat?.id)
+        .map((update: any) => ({
+          chatId: update.message.chat.id,
+          chatType: update.message.chat.type,
+          chatTitle: update.message.chat.title || update.message.chat.first_name || 'Без названия',
+          from: update.message.from?.first_name || 'Неизвестно'
+        }));
+
+      console.log('💬 Найденные чаты:', chatIds);
+
+      return { success: true, updates: chatIds };
+    } catch (error) {
+      console.error('❌ Ошибка получения обновлений:', error);
+      return { 
+        success: false, 
+        error: error instanceof Error ? error.message : 'Неизвестная ошибка' 
+      };
+    }
+  }
 }
 
 // Создаем экземпляр бота с токеном
@@ -177,7 +212,7 @@ export const telegramBot = new TelegramBotService({
   botToken: "7547487408:AAFQnLgkanxSA0Fe5cXZW6x64YImH_sU-gA",
   // TODO: Укажите ваш chat_id для получения уведомлений
   // Чтобы узнать chat_id, напишите боту @userinfobot или @raw_data_bot
-  chatId: "-1004970200666", // Временный chat_id для тестирования (замените на ваш)
+  // chatId: "YOUR_CHAT_ID", // Укажите правильный chat_id после получения
 });
 
 export default TelegramBotService;
