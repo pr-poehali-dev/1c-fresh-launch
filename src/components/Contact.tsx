@@ -69,7 +69,7 @@ export default function Contact() {
                   <Icon name="MapPin" className="text-orange-500 mr-3 mt-1" size={20} />
                   <div>
                     <p className="font-semibold text-gray-900">Адрес</p>
-                    <p className="text-gray-600">г. Москва, ул. Примерная, 123</p>
+                    <p className="text-gray-600">614007, Пермский край, город Пермь,<br />ул. Революции, д. 14, кв. 57</p>
                   </div>
                 </div>
               </div>
