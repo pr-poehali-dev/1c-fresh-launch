@@ -221,7 +221,7 @@ export const telegramBot = new TelegramBotService({
   botToken: "7547487408:AAFQnLgkanxSA0Fe5cXZW6x64YImH_sU-gA",
   // TODO: Укажите ваш chat_id для получения уведомлений
   // Чтобы узнать chat_id, напишите боту @userinfobot или @raw_data_bot
-  chatId: "-1004970200666", // Укажите правильный chat_id после получения
+  chatId: "-4970200666", // Укажите правильный chat_id после получения
 });
 
 export default TelegramBotService;
