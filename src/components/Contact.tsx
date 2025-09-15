@@ -1,8 +1,14 @@
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import Icon from '@/components/ui/icon';
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import Icon from "@/components/ui/icon";
 
 export default function Contact() {
   return (
@@ -16,7 +22,7 @@ export default function Contact() {
             Готовы ответить на ваши вопросы и помочь с выбором тарифа
           </p>
         </div>
-        
+
         <div className="grid lg:grid-cols-2 gap-12">
           <Card className="p-8">
             <CardHeader className="p-0 mb-6">
@@ -39,49 +45,76 @@ export default function Contact() {
               </form>
             </CardContent>
           </Card>
-          
+
           <div className="space-y-8">
             <div>
-              <h3 className="font-display font-bold text-xl text-gray-900 mb-6">Контактная информация</h3>
+              <h3 className="font-display font-bold text-xl text-gray-900 mb-6">
+                Контактная информация
+              </h3>
               <div className="space-y-4">
                 <div className="flex items-start">
-                  <Icon name="Phone" className="text-orange-500 mr-3 mt-1" size={20} />
+                  <Icon
+                    name="Phone"
+                    className="text-orange-500 mr-3 mt-1"
+                    size={20}
+                  />
                   <div>
                     <p className="font-semibold text-gray-900">Телефон</p>
                     <p className="text-gray-600">+7 (342) 270‒00‒01</p>
                   </div>
                 </div>
                 <div className="flex items-start">
-                  <Icon name="Mail" className="text-orange-500 mr-3 mt-1" size={20} />
+                  <Icon
+                    name="Mail"
+                    className="text-orange-500 mr-3 mt-1"
+                    size={20}
+                  />
                   <div>
                     <p className="font-semibold text-gray-900">Email</p>
-                    <p className="text-gray-600">info@1cfresh-partner.ru</p>
+                    <p className="text-gray-600">ivanickiy@centerai.tech</p>
                   </div>
                 </div>
                 <div className="flex items-start">
-                  <Icon name="Clock" className="text-orange-500 mr-3 mt-1" size={20} />
+                  <Icon
+                    name="Clock"
+                    className="text-orange-500 mr-3 mt-1"
+                    size={20}
+                  />
                   <div>
                     <p className="font-semibold text-gray-900">Режим работы</p>
-                    <p className="text-gray-600">Пн-Пт: 9:00-18:00<br />Поддержка: 24/7</p>
+                    <p className="text-gray-600">
+                      Пн-Пт: 9:00-18:00
+                      <br />
+                      Поддержка: 24/7
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-start">
-                  <Icon name="MapPin" className="text-orange-500 mr-3 mt-1" size={20} />
+                  <Icon
+                    name="MapPin"
+                    className="text-orange-500 mr-3 mt-1"
+                    size={20}
+                  />
                   <div>
                     <p className="font-semibold text-gray-900">Адрес</p>
-                    <p className="text-gray-600">614007, Пермский край, город Пермь,<br />ул. Революции, д. 14, кв. 57</p>
+                    <p className="text-gray-600">
+                      614007, Пермский край, город Пермь,
+                      <br />
+                      ул. Революции, д. 14, кв. 57
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
-            
+
             <Card className="p-6 bg-gradient-to-br from-orange-50 to-indigo-50 border-orange-200">
               <CardContent className="p-0">
                 <h4 className="font-display font-semibold text-lg text-gray-900 mb-2">
                   Нужна консультация?
                 </h4>
                 <p className="text-gray-600 mb-4">
-                  Наши специалисты помогут подобрать оптимальное решение для вашего бизнеса
+                  Наши специалисты помогут подобрать оптимальное решение для
+                  вашего бизнеса
                 </p>
                 <Button className="bg-orange-500 hover:bg-orange-600 text-white rounded-[30px]">
                   <Icon name="Phone" size={16} className="mr-2" />
