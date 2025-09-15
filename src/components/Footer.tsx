@@ -22,30 +22,30 @@ export default function Footer() {
           <div>
             <h4 className="font-display font-semibold text-lg mb-4">Услуги</h4>
             <ul className="space-y-2 text-gray-400">
-              <li><a href="#" className="hover:text-orange-500 transition-colors">1С:Бухгалтерия</a></li>
-              <li><a href="#" className="hover:text-orange-500 transition-colors">1С:Зарплата и кадры</a></li>
-              <li><a href="#" className="hover:text-orange-500 transition-colors">1С:Управление фирмой</a></li>
-              <li><a href="#" className="hover:text-orange-500 transition-colors">1С:ERP</a></li>
+              <li><a href="#products" className="hover:text-orange-500 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' }); }}>1С:Бухгалтерия</a></li>
+              <li><a href="#products" className="hover:text-orange-500 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' }); }}>1С:Зарплата и кадры</a></li>
+              <li><a href="#products" className="hover:text-orange-500 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' }); }}>1С:Управление фирмой</a></li>
+              <li><a href="#products" className="hover:text-orange-500 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' }); }}>1С:ERP</a></li>
             </ul>
           </div>
           
           <div>
             <h4 className="font-display font-semibold text-lg mb-4">Компания</h4>
             <ul className="space-y-2 text-gray-400">
-              <li><a href="#" className="hover:text-orange-500 transition-colors">О нас</a></li>
-              <li><a href="#" className="hover:text-orange-500 transition-colors">Новости</a></li>
-              <li><a href="#" className="hover:text-orange-500 transition-colors">Партнерство</a></li>
-              <li><a href="#" className="hover:text-orange-500 transition-colors">Вакансии</a></li>
+              <li><a href="#advantages" className="hover:text-orange-500 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); document.getElementById('advantages')?.scrollIntoView({ behavior: 'smooth' }); }}>О нас</a></li>
+              <li><a href="#faq" className="hover:text-orange-500 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' }); }}>Новости</a></li>
+              <li><a href="#contact" className="hover:text-orange-500 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }}>Партнерство</a></li>
+              <li><a href="#pricing" className="hover:text-orange-500 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' }); }}>Тарифы</a></li>
             </ul>
           </div>
           
           <div>
             <h4 className="font-display font-semibold text-lg mb-4">Поддержка</h4>
             <ul className="space-y-2 text-gray-400">
-              <li><a href="#" className="hover:text-orange-500 transition-colors">База знаний</a></li>
-              <li><a href="#" className="hover:text-orange-500 transition-colors">Документация</a></li>
-              <li><a href="#" className="hover:text-orange-500 transition-colors">Обучение</a></li>
-              <li><a href="#" className="hover:text-orange-500 transition-colors">Контакты</a></li>
+              <li><a href="#faq" className="hover:text-orange-500 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' }); }}>База знаний</a></li>
+              <li><a href="#faq" className="hover:text-orange-500 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' }); }}>Документация</a></li>
+              <li><a href="#faq" className="hover:text-orange-500 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' }); }}>Обучение</a></li>
+              <li><a href="#contact" className="hover:text-orange-500 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }}>Контакты</a></li>
             </ul>
           </div>
         </div>
