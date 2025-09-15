@@ -71,9 +71,7 @@ export default function Hero() {
             backgroundPosition: "center center",
             maxWidth: "1200px",
             margin: "0 auto",
-            left: "50%",
-            transform: "translateX(-50%)",
-            position: "absolute"
+            transform: "translateX(-50%)"
           }}
         ></div>
       </div>
