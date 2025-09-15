@@ -24,10 +24,12 @@ export default function Pricing() {
       if (result.success) {
         toast.success('Заявка отправлена! Мы свяжемся с вами в ближайшее время.');
       } else {
-        toast.error('Ошибка отправки заявки. Попробуйте позже.');
+        console.error('Telegram error:', result.error);
+        toast.error(`Ошибка: ${result.error || 'Не удалось отправить заявку'}`);
       }
     } catch (error) {
-      toast.error('Ошибка отправки заявки. Попробуйте позже.');
+      console.error('Plan selection error:', error);
+      toast.error(`Ошибка: ${error instanceof Error ? error.message : 'Не удалось отправить заявку'}`);
     } finally {
       setIsLoading(false);
     }
@@ -46,10 +48,12 @@ export default function Pricing() {
       if (result.success) {
         toast.success('Запрос отправлен! Мы рассчитаем индивидуальный тариф и свяжемся с вами.');
       } else {
-        toast.error('Ошибка отправки запроса. Попробуйте позже.');
+        console.error('Telegram error:', result.error);
+        toast.error(`Ошибка: ${result.error || 'Не удалось отправить запрос'}`);
       }
     } catch (error) {
-      toast.error('Ошибка отправки запроса. Попробуйте позже.');
+      console.error('Custom calculation error:', error);
+      toast.error(`Ошибка: ${error instanceof Error ? error.message : 'Не удалось отправить запрос'}`);
     } finally {
       setIsLoading(false);
     }

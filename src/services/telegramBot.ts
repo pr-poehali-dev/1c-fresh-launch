@@ -29,7 +29,8 @@ class TelegramBotService {
       const chatId = options.chatId || this.defaultChatId;
 
       if (!chatId) {
-        throw new Error("Chat ID не указан");
+        console.error('⚠️ Telegram Bot: Chat ID не настроен');
+        throw new Error("Chat ID не настроен. Укажите chatId в конфигурации бота.");
       }
 
       const payload = {
@@ -151,7 +152,7 @@ export const telegramBot = new TelegramBotService({
   botToken: "7547487408:AAFQnLgkanxSA0Fe5cXZW6x64YImH_sU-gA",
   // TODO: Укажите ваш chat_id для получения уведомлений
   // Чтобы узнать chat_id, напишите боту @userinfobot или @raw_data_bot
-  chatId: "-100-4970200666", // Замените на реальный chat_id
+  chatId: '7547487408', // Временный chat_id для тестирования (замените на ваш)
 });
 
 export default TelegramBotService;
