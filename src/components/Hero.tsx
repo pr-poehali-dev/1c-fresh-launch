@@ -59,16 +59,21 @@ export default function Hero() {
   return (
     <section className="pt-20 md:pt-24 lg:pt-20 pb-12 md:pb-16 relative overflow-hidden min-h-screen flex items-center bg-white">
       {/* Animated Gradient Blob */}
-      {/* Desktop version - centered at 100% width */}
-      <div className="hidden md:block absolute inset-0 flex items-center justify-center">
+      {/* Desktop version - properly centered */}
+      <div className="hidden md:block absolute inset-0">
         <div
-          className="animate-float-blob w-[100%] max-w-[1200px] h-[500px] lg:h-[600px] opacity-90"
+          className="animate-float-blob w-full h-full opacity-90"
           style={{
             background:
               'url("https://cdn.poehali.dev/files/abf41b44-2c91-4b72-91e7-9567e81a7898.jpg")',
             backgroundSize: "contain",
             backgroundRepeat: "no-repeat",
-            backgroundPosition: "center",
+            backgroundPosition: "center center",
+            maxWidth: "1200px",
+            margin: "0 auto",
+            left: "50%",
+            transform: "translateX(-50%)",
+            position: "absolute"
           }}
         ></div>
       </div>
@@ -92,7 +97,7 @@ export default function Hero() {
           {/* Logo Icon */}
           <div className="flex justify-center mb-6">
             <img 
-              src="https://cdn.poehali.dev/files/94c9c9d0-caa6-460c-bb08-d8781b54cdda.png" 
+              src="/img/9cf2c296-470e-4a41-871b-84da60673a25.jpg" 
               alt="1C Logo" 
               className="h-16 md:h-20 lg:h-24 w-auto"
             />
