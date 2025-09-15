@@ -9,8 +9,12 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import Icon from "@/components/ui/icon";
+import TelegramContactForm from "@/components/TelegramContactForm";
+import { useTelegramWebApp } from "@/hooks/useTelegramWebApp";
 
 export default function Contact() {
+  const telegramWebApp = useTelegramWebApp();
+
   return (
     <section id="contact" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -24,27 +28,35 @@ export default function Contact() {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
-          <Card className="p-8">
-            <CardHeader className="p-0 mb-6">
-              <CardTitle className="font-display font-bold text-2xl text-gray-900">
-                Оставьте заявку
-              </CardTitle>
-              <CardDescription>
-                Заполните форму и мы свяжемся с вами в течение часа
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="p-0">
-              <form className="space-y-4">
-                <Input placeholder="Ваше имя" />
-                <Input type="email" placeholder="Email" />
-                <Input type="tel" placeholder="Телефон" />
-                <Textarea placeholder="Сообщение" rows={4} />
-                <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white rounded-[30px]">
-                  Отправить заявку
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
+          {/* Используем Telegram форму если запущено в Telegram, обычную в браузере */}
+          {telegramWebApp.isInTelegram ? (
+            <TelegramContactForm 
+              title="Оставьте заявку"
+              subtitle="Заполните форму и мы свяжемся с вами в течение часа"
+            />
+          ) : (
+            <Card className="p-8">
+              <CardHeader className="p-0 mb-6">
+                <CardTitle className="font-display font-bold text-2xl text-gray-900">
+                  Оставьте заявку
+                </CardTitle>
+                <CardDescription>
+                  Заполните форму и мы свяжемся с вами в течение часа
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="p-0">
+                <form className="space-y-4">
+                  <Input placeholder="Ваше имя" />
+                  <Input type="email" placeholder="Email" />
+                  <Input type="tel" placeholder="Телефон" />
+                  <Textarea placeholder="Сообщение" rows={4} />
+                  <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white rounded-[30px]">
+                    Отправить заявку
+                  </Button>
+                </form>
+              </CardContent>
+            </Card>
+          )}
 
           <div className="space-y-8">
             <div>
