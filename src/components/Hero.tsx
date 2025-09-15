@@ -1,8 +1,32 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import Icon from '@/components/ui/icon';
+import { useTelegramWebApp } from '@/hooks/useTelegramWebApp';
 
 export default function Hero() {
+  const telegramWebApp = useTelegramWebApp();
+
+  const handleConsultation = () => {
+    // Проверяем если это мобильное устройство
+    const isMobile = window.innerWidth <= 768;
+    
+    if (isMobile || telegramWebApp.isInTelegram) {
+      // Для мобильных устройств или Telegram WebApp - открываем Telegram бота
+      const telegramBotUrl = 'https://t.me/SaasFreshBot';
+      
+      if (telegramWebApp.isInTelegram) {
+        // Если в Telegram WebApp, используем встроенный метод
+        telegramWebApp.openLink(telegramBotUrl);
+      } else {
+        // Если обычный мобильный браузер, открываем ссылку
+        window.open(telegramBotUrl, '_blank');
+      }
+    } else {
+      // Для десктопа - скроллим к контактной форме
+      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const advantages = [
     {
       icon: 'Shield',
@@ -86,9 +110,11 @@ export default function Hero() {
             <Button 
               variant="outline" 
               size="lg" 
+              onClick={handleConsultation}
               className="border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white px-8 py-4 text-lg font-semibold rounded-[30px] transition-all"
             >
               Консультация
+              <Icon name="MessageCircle" size={20} className="ml-2" />
             </Button>
           </div>
         </div>
