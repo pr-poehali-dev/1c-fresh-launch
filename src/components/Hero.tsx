@@ -98,7 +98,7 @@ export default function Hero() {
             />
           </div>
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display font-bold text-gray-900 mb-4 md:mb-6 leading-tight">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-4 md:mb-6 leading-tight" style={{ color: '#cccccc' }}>
             ПРОФЕССИОНАЛЬНЫЕ
             <br />
             ПОДПИСКИ НА 1C FRESH
