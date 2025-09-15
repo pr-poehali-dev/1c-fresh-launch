@@ -147,7 +147,9 @@ ${data.message ? `💬 <b>Комментарий:</b> ${data.message}` : ''}
 // Создаем экземпляр бота с токеном
 export const telegramBot = new TelegramBotService({
   botToken: '7547487408:AAFQnLgkanxSA0Fe5cXZW6x64YImH_sU-gA',
-  // chatId можно будет настроить позже для конкретного чата
+  // TODO: Укажите ваш chat_id для получения уведомлений
+  // Чтобы узнать chat_id, напишите боту @userinfobot или @raw_data_bot
+  chatId: '-1002345678901', // Замените на реальный chat_id
 });
 
 export default TelegramBotService;
