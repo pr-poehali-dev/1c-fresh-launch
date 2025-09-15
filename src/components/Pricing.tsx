@@ -3,9 +3,57 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
+import { telegramBot } from '@/services/telegramBot';
+import { toast } from 'sonner';
 
 export default function Pricing() {
   const [selectedPlan, setSelectedPlan] = useState('6months');
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handlePlanSelection = async (plan: any, period: string) => {
+    setIsLoading(true);
+    try {
+      const result = await telegramBot.sendOrderNotification({
+        service: `Тариф ${plan.name} (${period === '6months' ? '6 месяцев' : '12 месяцев'})`,
+        name: 'Клиент с сайта',
+        phone: 'Требуется уточнить',
+        price: `${plan.price} ₽/месяц`,
+        message: `${plan.description}. Функции: ${plan.features.join(', ')}`
+      });
+
+      if (result.success) {
+        toast.success('Заявка отправлена! Мы свяжемся с вами в ближайшее время.');
+      } else {
+        toast.error('Ошибка отправки заявки. Попробуйте позже.');
+      }
+    } catch (error) {
+      toast.error('Ошибка отправки заявки. Попробуйте позже.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleCustomCalculation = async () => {
+    setIsLoading(true);
+    try {
+      const result = await telegramBot.sendOrderNotification({
+        service: 'Индивидуальный расчет тарифа',
+        name: 'Клиент с сайта',
+        phone: 'Требуется уточнить',
+        message: 'Запрос индивидуального расчета тарифного плана'
+      });
+
+      if (result.success) {
+        toast.success('Запрос отправлен! Мы рассчитаем индивидуальный тариф и свяжемся с вами.');
+      } else {
+        toast.error('Ошибка отправки запроса. Попробуйте позже.');
+      }
+    } catch (error) {
+      toast.error('Ошибка отправки запроса. Попробуйте позже.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const plans = {
     '6months': [
@@ -119,8 +167,12 @@ export default function Pricing() {
                     </li>
                   ))}
                 </ul>
-                <Button className={`w-full ${plan.popular ? 'bg-orange-500 hover:bg-orange-600' : 'bg-gray-900 hover:bg-gray-800'} text-white rounded-[30px]`}>
-                  Выбрать план
+                <Button 
+                  onClick={() => handlePlanSelection(plan, selectedPlan)}
+                  disabled={isLoading}
+                  className={`w-full ${plan.popular ? 'bg-orange-500 hover:bg-orange-600' : 'bg-gray-900 hover:bg-gray-800'} text-white rounded-[30px]`}
+                >
+                  {isLoading ? 'Отправка...' : 'Выбрать план'}
                 </Button>
               </CardContent>
             </Card>
@@ -131,8 +183,13 @@ export default function Pricing() {
           <Card className="inline-block p-8 bg-gradient-to-r from-orange-500 to-indigo-500 text-white">
             <h3 className="font-display font-bold text-xl mb-2">Нужен индивидуальный тариф?</h3>
             <p className="mb-4">Рассчитаем оптимальное решение для вашего бизнеса</p>
-            <Button variant="secondary" className="bg-white text-orange-500 hover:bg-gray-100 rounded-[30px]">
-              Запросить расчет
+            <Button 
+              onClick={handleCustomCalculation}
+              disabled={isLoading}
+              variant="secondary" 
+              className="bg-white text-orange-500 hover:bg-gray-100 rounded-[30px]"
+            >
+              {isLoading ? 'Отправка...' : 'Запросить расчет'}
             </Button>
           </Card>
         </div>
