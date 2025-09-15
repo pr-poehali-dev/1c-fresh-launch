@@ -24,13 +24,37 @@ export default {
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
+				// Brand colors based on design system
+				orange: {
+					50: '#fff7ed',
+					100: '#ffedd5',
+					500: '#FF6B35',
+					600: '#ea580c',
+					700: '#c2410c'
+				},
+				indigo: {
+					500: '#4F46E5',
+					600: '#4338ca',
+					700: '#3730a3'
+				},
+				gray: {
+					100: '#f7f8f9',
+					200: '#e1e5e9',
+					300: '#cad1d9',
+					400: '#a1acb8',
+					500: '#6c7983',
+					600: '#4a5568',
+					700: '#2d3748',
+					800: '#1a202c',
+					900: '#171923'
+				},
 				primary: {
-					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					DEFAULT: '#FF6B35',
+					foreground: '#ffffff'
 				},
 				secondary: {
-					DEFAULT: 'hsl(var(--secondary))',
-					foreground: 'hsl(var(--secondary-foreground))'
+					DEFAULT: '#4F46E5',
+					foreground: '#ffffff'
 				},
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive))',
@@ -84,11 +108,25 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'fade-in': {
+					'0%': { opacity: '0', transform: 'translateY(20px)' },
+					'100%': { opacity: '1', transform: 'translateY(0)' }
+				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0px)' },
+					'50%': { transform: 'translateY(-10px)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fade-in 0.6s ease-out',
+				'float': 'float 3s ease-in-out infinite'
+			},
+			fontFamily: {
+				'sans': ['Open Sans', 'system-ui', 'sans-serif'],
+				'display': ['Montserrat', 'system-ui', 'sans-serif']
 			}
 		}
 	},
