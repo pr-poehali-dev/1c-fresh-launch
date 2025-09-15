@@ -43,7 +43,11 @@ export default function Hero() {
               <span className="block sm:inline">Без серверов, без сложных настроек — просто работайте!</span>
             </p>
             <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 md:gap-4 justify-center lg:justify-start">
-              <Button size="default" className="bg-orange-500 hover:bg-orange-600 text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 w-full sm:w-auto text-sm sm:text-base rounded-[30px]">
+              <Button 
+                size="default" 
+                className="bg-orange-500 hover:bg-orange-600 text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 w-full sm:w-auto text-sm sm:text-base rounded-[30px]"
+                onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
+              >
                 Выбрать тариф
                 <Icon name="ArrowRight" size={16} className="ml-2" />
               </Button>
