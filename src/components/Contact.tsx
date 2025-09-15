@@ -48,7 +48,7 @@ export default function Contact() {
                   <Icon name="Phone" className="text-orange-500 mr-3 mt-1" size={20} />
                   <div>
                     <p className="font-semibold text-gray-900">Телефон</p>
-                    <p className="text-gray-600">+7 958 240 00 10</p>
+                    <p className="text-gray-600">+7 (342) 270‒00‒01</p>
                   </div>
                 </div>
                 <div className="flex items-start">

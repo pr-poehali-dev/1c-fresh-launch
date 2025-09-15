@@ -28,7 +28,7 @@ export default function Navigation() {
             {/* Phone Button */}
             <Button className="hidden sm:flex bg-gray-900 hover:bg-gray-800 text-white rounded-[30px] px-4 py-2">
               <Icon name="Phone" size={16} className="mr-2" />
-              <span className="hidden lg:inline">+7 958 240 00 10</span>
+              <span className="hidden lg:inline">+7 (342) 270‒00‒01</span>
               <span className="lg:hidden">Звонок</span>
             </Button>
             
@@ -65,7 +65,7 @@ export default function Navigation() {
               <div className="pt-2 border-t border-gray-100">
                 <Button className="w-full bg-gray-900 hover:bg-gray-800 text-white rounded-[30px]">
                   <Icon name="Phone" size={16} className="mr-2" />
-                  +7 958 240 00 10
+                  +7 (342) 270‒00‒01
                 </Button>
               </div>
             </div>
