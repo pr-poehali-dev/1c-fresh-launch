@@ -14,8 +14,8 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Показываем навигацию только если НЕ в Telegram */}
-      {!telegramWebApp.isInTelegram && <Navigation />}
+      {/* Показываем навигацию всегда, кроме Telegram WebApp */}
+      <Navigation />
       
       {/* Показываем приветствие пользователя Telegram */}
       {telegramWebApp.isInTelegram && telegramWebApp.user && (
