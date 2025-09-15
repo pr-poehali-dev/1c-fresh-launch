@@ -11,20 +11,26 @@ export default function Pricing() {
   const [isLoading, setIsLoading] = useState(false);
 
   const handlePlanSelection = async (plan: any, period: string) => {
+    console.log('🎯 Выбор тарифа:', { plan: plan.name, period, price: plan.price });
     setIsLoading(true);
     try {
-      const result = await telegramBot.sendOrderNotification({
+      const orderData = {
         service: `Тариф ${plan.name} (${period === '6months' ? '6 месяцев' : '12 месяцев'})`,
         name: 'Клиент с сайта',
         phone: 'Требуется уточнить',
         price: `${plan.price} ₽/месяц`,
         message: `${plan.description}. Функции: ${plan.features.join(', ')}`
-      });
+      };
+      
+      console.log('📦 Отправка данных заказа:', orderData);
+      const result = await telegramBot.sendOrderNotification(orderData);
+      
+      console.log('📨 Результат отправки:', result);
 
       if (result.success) {
         toast.success('Заявка отправлена! Мы свяжемся с вами в ближайшее время.');
       } else {
-        console.error('Telegram error:', result.error);
+        console.error('❌ Telegram error:', result.error);
         toast.error(`Ошибка: ${result.error || 'Не удалось отправить заявку'}`);
       }
     } catch (error) {
@@ -36,19 +42,25 @@ export default function Pricing() {
   };
 
   const handleCustomCalculation = async () => {
+    console.log('💰 Запрос индивидуального расчета');
     setIsLoading(true);
     try {
-      const result = await telegramBot.sendOrderNotification({
+      const orderData = {
         service: 'Индивидуальный расчет тарифа',
         name: 'Клиент с сайта',
         phone: 'Требуется уточнить',
         message: 'Запрос индивидуального расчета тарифного плана'
-      });
+      };
+      
+      console.log('📦 Отправка запроса расчета:', orderData);
+      const result = await telegramBot.sendOrderNotification(orderData);
+      
+      console.log('📨 Результат отправки расчета:', result);
 
       if (result.success) {
         toast.success('Запрос отправлен! Мы рассчитаем индивидуальный тариф и свяжемся с вами.');
       } else {
-        console.error('Telegram error:', result.error);
+        console.error('❌ Telegram error:', result.error);
         toast.error(`Ошибка: ${result.error || 'Не удалось отправить запрос'}`);
       }
     } catch (error) {
