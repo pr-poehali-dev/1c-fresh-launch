@@ -8,11 +8,39 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { telegramBot } from '@/services/telegramBot';
+import { toast } from 'sonner';
 import Icon from "@/components/ui/icon";
 import TelegramContactForm from "@/components/TelegramContactForm";
 import { useTelegramWebApp } from "@/hooks/useTelegramWebApp";
 
 export default function Contact() {
+  const testTelegramBot = async () => {
+    try {
+      console.log('🧪 Тестирование Telegram бота...');
+      
+      // Сначала проверим бота
+      const botInfo = await telegramBot.getMe();
+      console.log('Bot info:', botInfo);
+      
+      if (botInfo.success) {
+        toast.success('Бот активен: ' + botInfo.botInfo?.first_name);
+        
+        // Теперь попробуем отправить тестовое сообщение
+        const result = await telegramBot.testMessage();
+        if (result.success) {
+          toast.success('✅ Тестовое сообщение отправлено!');
+        } else {
+          toast.error('❌ Ошибка отправки: ' + result.error);
+        }
+      } else {
+        toast.error('❌ Бот недоступен: ' + botInfo.error);
+      }
+    } catch (error) {
+      console.error('Test error:', error);
+      toast.error('❌ Ошибка теста: ' + (error as Error).message);
+    }
+  };
   const telegramWebApp = useTelegramWebApp();
 
   return (
@@ -128,10 +156,19 @@ export default function Contact() {
                   Наши специалисты помогут подобрать оптимальное решение для
                   вашего бизнеса
                 </p>
-                <Button className="bg-orange-500 hover:bg-orange-600 text-white rounded-[30px]">
-                  <Icon name="Phone" size={16} className="mr-2" />
-                  Заказать звонок
-                </Button>
+                <div className="space-y-2">
+                  <Button className="bg-orange-500 hover:bg-orange-600 text-white rounded-[30px]">
+                    <Icon name="Phone" size={16} className="mr-2" />
+                    Заказать звонок
+                  </Button>
+                  <Button 
+                    onClick={testTelegramBot}
+                    variant="outline" 
+                    className="w-full rounded-[30px]"
+                  >
+                    🧪 Тест Telegram бота
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           </div>

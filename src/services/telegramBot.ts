@@ -43,6 +43,12 @@ class TelegramBotService {
         disable_notification: options.disableNotification || false,
       };
 
+      console.log('🤖 Отправка в Telegram:', {
+        url: `${this.baseUrl}/sendMessage`,
+        chatId,
+        textLength: text.length
+      });
+
       const response = await fetch(`${this.baseUrl}/sendMessage`, {
         method: "POST",
         headers: {
@@ -52,11 +58,19 @@ class TelegramBotService {
       });
 
       const result = await response.json();
+      console.log('📨 Ответ от Telegram API:', { 
+        status: response.status, 
+        ok: response.ok, 
+        result 
+      });
 
       if (!response.ok) {
-        throw new Error(result.description || "Ошибка отправки сообщения");
+        const errorMsg = result.description || `HTTP ${response.status}: ${response.statusText}`;
+        console.error('❌ Ошибка Telegram API:', errorMsg);
+        throw new Error(errorMsg);
       }
 
+      console.log('✅ Сообщение отправлено успешно');
       return { success: true };
     } catch (error) {
       console.error("Ошибка отправки в Telegram:", error);
@@ -129,8 +143,11 @@ ${data.message ? `💬 <b>Комментарий:</b> ${data.message}` : ""}
 
   async getMe(): Promise<{ success: boolean; botInfo?: any; error?: string }> {
     try {
+      console.log('🔍 Проверка бота:', `${this.baseUrl}/getMe`);
       const response = await fetch(`${this.baseUrl}/getMe`);
       const result = await response.json();
+
+      console.log('🤖 Информация о боте:', result);
 
       if (!response.ok) {
         throw new Error(
@@ -140,12 +157,18 @@ ${data.message ? `💬 <b>Комментарий:</b> ${data.message}` : ""}
 
       return { success: true, botInfo: result.result };
     } catch (error) {
-      console.error("Ошибка получения информации о боте:", error);
+      console.error("❌ Ошибка получения информации о боте:", error);
       return {
         success: false,
         error: error instanceof Error ? error.message : "Неизвестная ошибка",
       };
     }
+  }
+
+  // Тестовая функция для проверки отправки
+  async testMessage(): Promise<{ success: boolean; error?: string }> {
+    const testText = `🧪 Тест бота\n\nВремя: ${new Date().toLocaleString('ru-RU')}\nБот работает корректно!`;
+    return this.sendMessage(testText);
   }
 }
 
