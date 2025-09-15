@@ -29,9 +29,23 @@ export default function Hero() {
   return (
     <section className="pt-20 md:pt-24 lg:pt-20 pb-12 md:pb-16 relative overflow-hidden min-h-screen flex items-center bg-white">
       {/* Animated Gradient Blob */}
-      <div className="absolute inset-0 flex items-center justify-center">
+      {/* Desktop version - centered at 80% width */}
+      <div className="hidden md:block absolute inset-0 flex items-center justify-center">
         <div 
-          className="animate-float-blob w-[600px] h-[400px] md:w-[800px] md:h-[500px] lg:w-[1000px] lg:h-[600px] opacity-90"
+          className="animate-float-blob w-[80%] max-w-[1200px] h-[500px] lg:h-[600px] opacity-90"
+          style={{
+            background: 'url("https://cdn.poehali.dev/files/abf41b44-2c91-4b72-91e7-9567e81a7898.jpg")',
+            backgroundSize: 'contain',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center'
+          }}
+        ></div>
+      </div>
+      
+      {/* Mobile version - behind text and above buttons */}
+      <div className="md:hidden absolute top-0 left-0 w-full h-full flex items-start justify-center pt-32">
+        <div 
+          className="animate-float-blob w-[90%] h-[300px] opacity-70"
           style={{
             background: 'url("https://cdn.poehali.dev/files/abf41b44-2c91-4b72-91e7-9567e81a7898.jpg")',
             backgroundSize: 'contain',
