@@ -43,10 +43,10 @@ class TelegramBotService {
         disable_notification: options.disableNotification || false,
       };
 
-      console.log('🤖 Отправка в Telegram:', {
+      console.log("🤖 Отправка в Telegram:", {
         url: `${this.baseUrl}/sendMessage`,
         chatId,
-        textLength: text.length
+        textLength: text.length,
       });
 
       const response = await fetch(`${this.baseUrl}/sendMessage`, {
@@ -58,19 +58,21 @@ class TelegramBotService {
       });
 
       const result = await response.json();
-      console.log('📨 Ответ от Telegram API:', { 
-        status: response.status, 
-        ok: response.ok, 
-        result 
+      console.log("📨 Ответ от Telegram API:", {
+        status: response.status,
+        ok: response.ok,
+        result,
       });
 
       if (!response.ok) {
-        const errorMsg = result.description || `HTTP ${response.status}: ${response.statusText}`;
-        console.error('❌ Ошибка Telegram API:', errorMsg);
+        const errorMsg =
+          result.description ||
+          `HTTP ${response.status}: ${response.statusText}`;
+        console.error("❌ Ошибка Telegram API:", errorMsg);
         throw new Error(errorMsg);
       }
 
-      console.log('✅ Сообщение отправлено успешно');
+      console.log("✅ Сообщение отправлено успешно");
       return { success: true };
     } catch (error) {
       console.error("Ошибка отправки в Telegram:", error);
@@ -143,11 +145,11 @@ ${data.message ? `💬 <b>Комментарий:</b> ${data.message}` : ""}
 
   async getMe(): Promise<{ success: boolean; botInfo?: any; error?: string }> {
     try {
-      console.log('🔍 Проверка бота:', `${this.baseUrl}/getMe`);
+      console.log("🔍 Проверка бота:", `${this.baseUrl}/getMe`);
       const response = await fetch(`${this.baseUrl}/getMe`);
       const result = await response.json();
 
-      console.log('🤖 Информация о боте:', result);
+      console.log("🤖 Информация о боте:", result);
 
       if (!response.ok) {
         throw new Error(
@@ -167,21 +169,25 @@ ${data.message ? `💬 <b>Комментарий:</b> ${data.message}` : ""}
 
   // Тестовая функция для проверки отправки
   async testMessage(): Promise<{ success: boolean; error?: string }> {
-    const testText = `🧪 Тест бота\n\nВремя: ${new Date().toLocaleString('ru-RU')}\nБот работает корректно!`;
+    const testText = `🧪 Тест бота\n\nВремя: ${new Date().toLocaleString("ru-RU")}\nБот работает корректно!`;
     return this.sendMessage(testText);
   }
 
   // Получить доступные чаты (последние сообщения)
-  async getUpdates(): Promise<{ success: boolean; updates?: any[]; error?: string }> {
+  async getUpdates(): Promise<{
+    success: boolean;
+    updates?: any[];
+    error?: string;
+  }> {
     try {
-      console.log('📥 Получение обновлений:', `${this.baseUrl}/getUpdates`);
+      console.log("📥 Получение обновлений:", `${this.baseUrl}/getUpdates`);
       const response = await fetch(`${this.baseUrl}/getUpdates?limit=10`);
       const result = await response.json();
 
-      console.log('📨 Обновления от Telegram:', result);
+      console.log("📨 Обновления от Telegram:", result);
 
       if (!response.ok) {
-        throw new Error(result.description || 'Ошибка получения обновлений');
+        throw new Error(result.description || "Ошибка получения обновлений");
       }
 
       // Извлечь chat_id из сообщений
@@ -190,18 +196,21 @@ ${data.message ? `💬 <b>Комментарий:</b> ${data.message}` : ""}
         .map((update: any) => ({
           chatId: update.message.chat.id,
           chatType: update.message.chat.type,
-          chatTitle: update.message.chat.title || update.message.chat.first_name || 'Без названия',
-          from: update.message.from?.first_name || 'Неизвестно'
+          chatTitle:
+            update.message.chat.title ||
+            update.message.chat.first_name ||
+            "Без названия",
+          from: update.message.from?.first_name || "Неизвестно",
         }));
 
-      console.log('💬 Найденные чаты:', chatIds);
+      console.log("💬 Найденные чаты:", chatIds);
 
       return { success: true, updates: chatIds };
     } catch (error) {
-      console.error('❌ Ошибка получения обновлений:', error);
-      return { 
-        success: false, 
-        error: error instanceof Error ? error.message : 'Неизвестная ошибка' 
+      console.error("❌ Ошибка получения обновлений:", error);
+      return {
+        success: false,
+        error: error instanceof Error ? error.message : "Неизвестная ошибка",
       };
     }
   }
@@ -212,7 +221,7 @@ export const telegramBot = new TelegramBotService({
   botToken: "7547487408:AAFQnLgkanxSA0Fe5cXZW6x64YImH_sU-gA",
   // TODO: Укажите ваш chat_id для получения уведомлений
   // Чтобы узнать chat_id, напишите боту @userinfobot или @raw_data_bot
-  // chatId: "YOUR_CHAT_ID", // Укажите правильный chat_id после получения
+  chatId: "4970200666", // Укажите правильный chat_id после получения
 });
 
 export default TelegramBotService;
