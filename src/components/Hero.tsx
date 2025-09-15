@@ -74,9 +74,9 @@ export default function Hero() {
       </div>
 
       {/* Mobile version - behind text and above buttons */}
-      <div className="md:hidden absolute top-0 left-0 w-full h-full flex items-start justify-center pt-32">
+      <div className="md:hidden absolute top-0 left-0 w-full h-full flex items-start justify-center pt-24">
         <div
-          className="animate-float-blob w-[90%] h-[300px] opacity-70"
+          className="animate-float-blob w-[110%] h-[350px] opacity-70"
           style={{
             background:
               'url("https://cdn.poehali.dev/files/abf41b44-2c91-4b72-91e7-9567e81a7898.jpg")',
@@ -91,9 +91,11 @@ export default function Hero() {
         <div className="text-center">
           {/* Logo Icon */}
           <div className="flex justify-center mb-6">
-            <div className="text-gray-800 text-6xl md:text-8xl font-bold">
-              1C
-            </div>
+            <img 
+              src="https://cdn.poehali.dev/files/94c9c9d0-caa6-460c-bb08-d8781b54cdda.png" 
+              alt="1C Logo" 
+              className="h-16 md:h-20 lg:h-24 w-auto"
+            />
           </div>
 
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display font-bold text-gray-900 mb-4 md:mb-6 leading-tight">
