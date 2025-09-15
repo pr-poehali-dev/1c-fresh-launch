@@ -33,7 +33,7 @@ export default function Contact() {
                 <Input type="email" placeholder="Email" />
                 <Input type="tel" placeholder="Телефон" />
                 <Textarea placeholder="Сообщение" rows={4} />
-                <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white">
+                <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white rounded-[30px]">
                   Отправить заявку
                 </Button>
               </form>
@@ -83,7 +83,7 @@ export default function Contact() {
                 <p className="text-gray-600 mb-4">
                   Наши специалисты помогут подобрать оптимальное решение для вашего бизнеса
                 </p>
-                <Button className="bg-orange-500 hover:bg-orange-600 text-white">
+                <Button className="bg-orange-500 hover:bg-orange-600 text-white rounded-[30px]">
                   <Icon name="Phone" size={16} className="mr-2" />
                   Заказать звонок
                 </Button>

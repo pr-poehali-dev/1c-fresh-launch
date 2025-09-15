@@ -119,7 +119,7 @@ export default function Pricing() {
                     </li>
                   ))}
                 </ul>
-                <Button className={`w-full ${plan.popular ? 'bg-orange-500 hover:bg-orange-600' : 'bg-gray-900 hover:bg-gray-800'} text-white`}>
+                <Button className={`w-full ${plan.popular ? 'bg-orange-500 hover:bg-orange-600' : 'bg-gray-900 hover:bg-gray-800'} text-white rounded-[30px]`}>
                   Выбрать план
                 </Button>
               </CardContent>
@@ -131,7 +131,7 @@ export default function Pricing() {
           <Card className="inline-block p-8 bg-gradient-to-r from-orange-500 to-indigo-500 text-white">
             <h3 className="font-display font-bold text-xl mb-2">Нужен индивидуальный тариф?</h3>
             <p className="mb-4">Рассчитаем оптимальное решение для вашего бизнеса</p>
-            <Button variant="secondary" className="bg-white text-orange-500 hover:bg-gray-100">
+            <Button variant="secondary" className="bg-white text-orange-500 hover:bg-gray-100 rounded-[30px]">
               Запросить расчет
             </Button>
           </Card>

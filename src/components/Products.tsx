@@ -61,7 +61,7 @@ export default function Products() {
                 <CardDescription className="text-gray-600 text-base leading-relaxed mb-6">
                   {product.description}
                 </CardDescription>
-                <Button variant="outline" className="w-full border-orange-500 text-orange-500 hover:bg-orange-50">
+                <Button variant="outline" className="w-full border-orange-500 text-orange-500 hover:bg-orange-50 rounded-[30px]">
                   Выбрать тариф
                 </Button>
               </CardContent>
