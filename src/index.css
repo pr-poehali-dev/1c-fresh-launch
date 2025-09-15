@@ -101,3 +101,22 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Стили для Telegram Mini App */
+.telegram-app {
+  /* Убираем скролл-бар в Telegram */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.telegram-app::-webkit-scrollbar {
+  display: none;
+}
+
+/* Адаптация под темную тему Telegram */
+@media (prefers-color-scheme: dark) {
+  .telegram-app {
+    background-color: var(--tg-theme-bg-color, #ffffff);
+    color: var(--tg-theme-text-color, #000000);
+  }
+}
