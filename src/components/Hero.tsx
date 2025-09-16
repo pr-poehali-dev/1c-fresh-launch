@@ -10,24 +10,8 @@ export default function Hero() {
   const [showOrderForm, setShowOrderForm] = useState(false);
 
   const handleConsultation = () => {
-    // Проверяем если это мобильное устройство
-    const isMobile = window.innerWidth <= 768;
-
-    if (isMobile || telegramWebApp.isInTelegram) {
-      // Для мобильных устройств или Telegram WebApp - открываем Telegram бота
-      const telegramBotUrl = "https://t.me/SaasFreshBot";
-
-      if (telegramWebApp.isInTelegram) {
-        // Если в Telegram WebApp, используем встроенный метод
-        telegramWebApp.openLink(telegramBotUrl);
-      } else {
-        // Если обычный мобильный браузер, открываем ссылку
-        window.open(telegramBotUrl, "_blank");
-      }
-    } else {
-      // Для десктопа - показываем форму заказа
-      setShowOrderForm(true);
-    }
+    // Всегда показываем форму заказа для сбора данных клиента
+    setShowOrderForm(true);
   };
 
   const advantages = [
