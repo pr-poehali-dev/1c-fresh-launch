@@ -81,7 +81,7 @@ export default function Hero() {
           {/* Logo Icon */}
           <div className="flex justify-center mb-6">
             <img 
-              src="/img/9cf2c296-470e-4a41-871b-84da60673a25.jpg" 
+              src="https://cdn.poehali.dev/files/071560b3-cf4c-4f4b-80d7-19ada40d191c.jpg" 
               alt="1C Logo" 
               className="h-16 md:h-20 lg:h-24 w-auto"
             />
