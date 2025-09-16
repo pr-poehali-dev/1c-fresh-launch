@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -12,9 +13,16 @@ import { telegramBot } from '@/services/telegramBot';
 import { toast } from 'sonner';
 import Icon from "@/components/ui/icon";
 import TelegramContactForm from "@/components/TelegramContactForm";
+import CustomerOrderForm from "@/components/CustomerOrderForm";
 import { useTelegramWebApp } from "@/hooks/useTelegramWebApp";
 
 export default function Contact() {
+  const [showOrderForm, setShowOrderForm] = useState(false);
+  
+  const handleCallbackRequest = () => {
+    setShowOrderForm(true);
+  };
+  
   const testTelegramBot = async () => {
     try {
       console.log('🧪 Тестирование Telegram бота...');
@@ -171,7 +179,10 @@ export default function Contact() {
                   вашего бизнеса
                 </p>
                 <div className="space-y-2">
-                  <Button className="bg-orange-500 hover:bg-orange-600 text-white rounded-[30px]">
+                  <Button 
+                    onClick={handleCallbackRequest}
+                    className="bg-orange-500 hover:bg-orange-600 text-white rounded-[30px]"
+                  >
                     <Icon name="Phone" size={16} className="mr-2" />
                     Заказать звонок
                   </Button>
@@ -188,6 +199,14 @@ export default function Contact() {
           </div>
         </div>
       </div>
+      
+      {showOrderForm && (
+        <CustomerOrderForm
+          serviceType="Заказ обратного звонка"
+          serviceDetails="Запрос консультации по телефону в удобное время"
+          onClose={() => setShowOrderForm(false)}
+        />
+      )}
     </section>
   );
 }

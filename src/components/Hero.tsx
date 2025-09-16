@@ -1,10 +1,13 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Icon from "@/components/ui/icon";
 import { useTelegramWebApp } from "@/hooks/useTelegramWebApp";
+import CustomerOrderForm from "@/components/CustomerOrderForm";
 
 export default function Hero() {
   const telegramWebApp = useTelegramWebApp();
+  const [showOrderForm, setShowOrderForm] = useState(false);
 
   const handleConsultation = () => {
     // Проверяем если это мобильное устройство
@@ -22,10 +25,8 @@ export default function Hero() {
         window.open(telegramBotUrl, "_blank");
       }
     } else {
-      // Для десктопа - скроллим к контактной форме
-      document
-        .getElementById("contact")
-        ?.scrollIntoView({ behavior: "smooth" });
+      // Для десктопа - показываем форму заказа
+      setShowOrderForm(true);
     }
   };
 
@@ -164,6 +165,14 @@ export default function Hero() {
           ))}
         </div>
       </div>
+      
+      {showOrderForm && (
+        <CustomerOrderForm
+          serviceType="Консультация по 1C Fresh"
+          serviceDetails="Бесплатная консультация по выбору оптимального тарифа и настройке сервиса"
+          onClose={() => setShowOrderForm(false)}
+        />
+      )}
     </section>
   );
 }

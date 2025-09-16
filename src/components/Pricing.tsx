@@ -3,72 +3,29 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
-import { telegramBot } from '@/services/telegramBot';
-import { toast } from 'sonner';
+import CustomerOrderForm from '@/components/CustomerOrderForm';
 
 export default function Pricing() {
   const [selectedPlan, setSelectedPlan] = useState('6months');
-  const [isLoading, setIsLoading] = useState(false);
+  const [showOrderForm, setShowOrderForm] = useState(false);
+  const [orderFormData, setOrderFormData] = useState({ serviceType: '', serviceDetails: '', price: '' });
 
-  const handlePlanSelection = async (plan: any, period: string) => {
-    console.log('🎯 Выбор тарифа:', { plan: plan.name, period, price: plan.price });
-    setIsLoading(true);
-    try {
-      const orderData = {
-        service: `Тариф ${plan.name} (${period === '6months' ? '6 месяцев' : '12 месяцев'})`,
-        name: 'Клиент с сайта',
-        phone: 'Требуется уточнить',
-        price: `${plan.price} ₽/месяц`,
-        message: `${plan.description}. Функции: ${plan.features.join(', ')}`
-      };
-      
-      console.log('📦 Отправка данных заказа:', orderData);
-      const result = await telegramBot.sendOrderNotification(orderData);
-      
-      console.log('📨 Результат отправки:', result);
-
-      if (result.success) {
-        toast.success('Заявка отправлена! Мы свяжемся с вами в ближайшее время.');
-      } else {
-        console.error('❌ Telegram error:', result.error);
-        toast.error(`Ошибка: ${result.error || 'Не удалось отправить заявку'}`);
-      }
-    } catch (error) {
-      console.error('Plan selection error:', error);
-      toast.error(`Ошибка: ${error instanceof Error ? error.message : 'Не удалось отправить заявку'}`);
-    } finally {
-      setIsLoading(false);
-    }
+  const handlePlanSelection = (plan: any, period: string) => {
+    setOrderFormData({
+      serviceType: `Тариф ${plan.name} (${period === '6months' ? '6 месяцев' : '12 месяцев'})`,
+      serviceDetails: `${plan.description}. Функции: ${plan.features.join(', ')}`,
+      price: `${plan.price} ₽/месяц`
+    });
+    setShowOrderForm(true);
   };
 
-  const handleCustomCalculation = async () => {
-    console.log('💰 Запрос индивидуального расчета');
-    setIsLoading(true);
-    try {
-      const orderData = {
-        service: 'Индивидуальный расчет тарифа',
-        name: 'Клиент с сайта',
-        phone: 'Требуется уточнить',
-        message: 'Запрос индивидуального расчета тарифного плана'
-      };
-      
-      console.log('📦 Отправка запроса расчета:', orderData);
-      const result = await telegramBot.sendOrderNotification(orderData);
-      
-      console.log('📨 Результат отправки расчета:', result);
-
-      if (result.success) {
-        toast.success('Запрос отправлен! Мы рассчитаем индивидуальный тариф и свяжемся с вами.');
-      } else {
-        console.error('❌ Telegram error:', result.error);
-        toast.error(`Ошибка: ${result.error || 'Не удалось отправить запрос'}`);
-      }
-    } catch (error) {
-      console.error('Custom calculation error:', error);
-      toast.error(`Ошибка: ${error instanceof Error ? error.message : 'Не удалось отправить запрос'}`);
-    } finally {
-      setIsLoading(false);
-    }
+  const handleCustomCalculation = () => {
+    setOrderFormData({
+      serviceType: 'Индивидуальный расчет тарифа',
+      serviceDetails: 'Рассчитаем оптимальный тариф под ваши задачи и объем работ',
+      price: ''
+    });
+    setShowOrderForm(true);
   };
 
   const plans = {
@@ -185,10 +142,9 @@ export default function Pricing() {
                 </ul>
                 <Button 
                   onClick={() => handlePlanSelection(plan, selectedPlan)}
-                  disabled={isLoading}
                   className={`w-full ${plan.popular ? 'bg-orange-500 hover:bg-orange-600' : 'bg-gray-900 hover:bg-gray-800'} text-white rounded-[30px]`}
                 >
-                  {isLoading ? 'Отправка...' : 'Выбрать план'}
+                  Выбрать план
                 </Button>
               </CardContent>
             </Card>
@@ -201,15 +157,23 @@ export default function Pricing() {
             <p className="mb-4">Рассчитаем оптимальное решение для вашего бизнеса</p>
             <Button 
               onClick={handleCustomCalculation}
-              disabled={isLoading}
               variant="secondary" 
               className="bg-white text-orange-500 hover:bg-gray-100 rounded-[30px]"
             >
-              {isLoading ? 'Отправка...' : 'Запросить расчет'}
+              Запросить расчет
             </Button>
           </Card>
         </div>
       </div>
+      
+      {showOrderForm && (
+        <CustomerOrderForm
+          serviceType={orderFormData.serviceType}
+          serviceDetails={orderFormData.serviceDetails}
+          price={orderFormData.price}
+          onClose={() => setShowOrderForm(false)}
+        />
+      )}
     </section>
   );
 }
