@@ -107,6 +107,8 @@ ${data.source ? `📍 <b>Источник:</b> ${data.source}` : ""}
     service: string;
     name: string;
     phone: string;
+    email?: string;
+    company?: string;
     price?: string;
     message?: string;
   }): Promise<{ success: boolean; error?: string }> {
@@ -116,6 +118,8 @@ ${data.source ? `📍 <b>Источник:</b> ${data.source}` : ""}
 🎯 <b>Услуга:</b> ${data.service}
 👤 <b>Клиент:</b> ${data.name}
 📞 <b>Телефон:</b> ${data.phone}
+${data.email ? `✉️ <b>Email:</b> ${data.email}` : ""}
+${data.company ? `🏢 <b>Компания:</b> ${data.company}` : ""}
 ${data.price ? `💰 <b>Стоимость:</b> ${data.price}` : ""}
 ${data.message ? `💬 <b>Комментарий:</b> ${data.message}` : ""}
 

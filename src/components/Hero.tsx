@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import Icon from "@/components/ui/icon";
 import { useTelegramWebApp } from "@/hooks/useTelegramWebApp";
 import CustomerOrderForm from "@/components/CustomerOrderForm";
+import TelegramContactForm from "@/components/TelegramContactForm";
 
 export default function Hero() {
   const telegramWebApp = useTelegramWebApp();
@@ -151,11 +152,34 @@ export default function Hero() {
       </div>
       
       {showOrderForm && (
-        <CustomerOrderForm
-          serviceType="Консультация по 1C Fresh"
-          serviceDetails="Бесплатная консультация по выбору оптимального тарифа и настройке сервиса"
-          onClose={() => setShowOrderForm(false)}
-        />
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          {telegramWebApp.isInTelegram ? (
+            <div className="bg-white rounded-lg p-6 max-w-md w-full">
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="text-lg font-semibold">Консультация по 1C Fresh</h3>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setShowOrderForm(false)}
+                  className="h-6 w-6 p-0"
+                >
+                  <Icon name="X" size={16} />
+                </Button>
+              </div>
+              <TelegramContactForm 
+                title="Консультация по 1C Fresh"
+                subtitle="Бесплатная консультация по выбору оптимального тарифа"
+                onSuccess={() => setShowOrderForm(false)}
+              />
+            </div>
+          ) : (
+            <CustomerOrderForm
+              serviceType="Консультация по 1C Fresh"
+              serviceDetails="Бесплатная консультация по выбору оптимального тарифа и настройке сервиса"
+              onClose={() => setShowOrderForm(false)}
+            />
+          )}
+        </div>
       )}
     </section>
   );
