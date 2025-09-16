@@ -4,6 +4,10 @@ import Icon from '@/components/ui/icon';
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
+  const handlePhoneCall = () => {
+    window.location.href = 'tel:+73422700001';
+  };
 
   return (
     <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-100">
@@ -26,7 +30,10 @@ export default function Navigation() {
           
           <div className="flex items-center space-x-2">
             {/* Phone Button */}
-            <Button className="hidden sm:flex bg-gray-900 hover:bg-gray-800 text-white rounded-[30px] px-4 py-2">
+            <Button 
+              onClick={handlePhoneCall}
+              className="hidden sm:flex bg-gray-900 hover:bg-gray-800 text-white rounded-[30px] px-4 py-2"
+            >
               <Icon name="Phone" size={16} className="mr-2" />
               <span className="hidden lg:inline">+7 (342) 270‒00‒01</span>
               <span className="lg:hidden">Звонок</span>
@@ -63,7 +70,10 @@ export default function Navigation() {
                 Контакты
               </a>
               <div className="pt-2 border-t border-gray-100">
-                <Button className="w-full bg-gray-900 hover:bg-gray-800 text-white rounded-[30px]">
+                <Button 
+                  onClick={handlePhoneCall}
+                  className="w-full bg-gray-900 hover:bg-gray-800 text-white rounded-[30px]"
+                >
                   <Icon name="Phone" size={16} className="mr-2" />
                   +7 (342) 270‒00‒01
                 </Button>
