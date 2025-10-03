@@ -11,10 +11,11 @@ export default function Pricing() {
   const [orderFormData, setOrderFormData] = useState({ serviceType: '', serviceDetails: '', price: '' });
 
   const handlePlanSelection = (plan: any, period: string) => {
+    const featuresText = plan.features.map((f: any) => typeof f === 'string' ? f : f.text).join(', ');
     setOrderFormData({
-      serviceType: `Тариф ${plan.name} (${period === '6months' ? '6 месяцев' : '12 месяцев'})`,
-      serviceDetails: `${plan.description}. Функции: ${plan.features.join(', ')}`,
-      price: `${plan.price} ₽/месяц`
+      serviceType: plan.isFree ? plan.name : `Тариф ${plan.name} (${period === '6months' ? '6 месяцев' : '12 месяцев'})`,
+      serviceDetails: `${plan.description}. Функции: ${featuresText}`,
+      price: plan.isFree ? 'Бесплатно' : `${plan.price} ₽/месяц`
     });
     setShowOrderForm(true);
   };
@@ -31,44 +32,82 @@ export default function Pricing() {
   const plans = {
     '6months': [
       {
+        name: 'Бесплатно 14 дней',
+        description: '10 баз, 5 пользователей',
+        price: '0',
+        features: [
+          { text: '10 баз приложений', available: true },
+          { text: '5 одновременных сеансов', available: true },
+          { text: 'До 50 ЭДО бесплатно', available: false },
+          { text: 'Доступ к 1С:ИТС', available: false },
+          { text: '1С-Отчетность', available: false },
+          { text: 'Электронная подпись', available: false }
+        ],
+        isFree: true
+      },
+      {
         name: 'БАЗОВЫЙ',
         description: '1 база, 2 пользователя',
         price: '1,730',
-        features: ['1 база любого приложения', '2 одновременных сеанса', 'До 50 ЭДО бесплатно', 'Доступ к 1С:ИТС']
+        features: [
+          { text: '1 база любого приложения', available: true },
+          { text: '2 одновременных сеанса', available: true },
+          { text: 'До 50 ЭДО бесплатно', available: true },
+          { text: 'Доступ к 1С:ИТС', available: true }
+        ],
+        popular: true
       },
       {
         name: 'ПРОФ',
         description: '10 баз, 5 пользователей',
         price: '5,310',
-        features: ['10 баз приложений', '5 одновременных сеансов', 'До 100 ЭДО бесплатно', '1С-Отчетность', 'Электронная подпись'],
-        popular: true
-      },
-      {
-        name: 'КОРП',
-        description: '10 баз, 10 пользователей',
-        price: '8,850',
-        features: ['2 базы КА', '10 других баз', '10 одновременных сеансов', 'Расширенный функционал', 'До 8 Гб на базу']
+        features: [
+          { text: '10 баз приложений', available: true },
+          { text: '5 одновременных сеансов', available: true },
+          { text: 'До 100 ЭДО бесплатно', available: true },
+          { text: '1С-Отчетность', available: true },
+          { text: 'Электронная подпись', available: true }
+        ]
       }
     ],
     '12months': [
       {
+        name: 'Бесплатно 14 дней',
+        description: '10 баз, 5 пользователей',
+        price: '0',
+        features: [
+          { text: '10 баз приложений', available: true },
+          { text: '5 одновременных сеансов', available: true },
+          { text: 'До 50 ЭДО бесплатно', available: false },
+          { text: 'Доступ к 1С:ИТС', available: false },
+          { text: '1С-Отчетность', available: false },
+          { text: 'Электронная подпись', available: false }
+        ],
+        isFree: true
+      },
+      {
         name: 'БАЗОВЫЙ',
         description: '1 база, 2 пользователя',
         price: '1,640',
-        features: ['1 база любого приложения', '2 одновременных сеанса', 'До 50 ЭДО бесплатно', 'Доступ к 1С:ИТС']
+        features: [
+          { text: '1 база любого приложения', available: true },
+          { text: '2 одновременных сеанса', available: true },
+          { text: 'До 50 ЭДО бесплатно', available: true },
+          { text: 'Доступ к 1С:ИТС', available: true }
+        ],
+        popular: true
       },
       {
         name: 'ПРОФ',
         description: '10 баз, 5 пользователей',
         price: '4,999',
-        features: ['10 баз приложений', '5 одновременных сеансов', 'До 100 ЭДО бесплатно', '1С-Отчетность', 'Электронная подпись'],
-        popular: true
-      },
-      {
-        name: 'КОРП',
-        description: '10 баз, 10 пользователей',
-        price: '8,330',
-        features: ['2 базы КА', '10 других баз', '10 одновременных сеансов', 'Расширенный функционал', 'До 8 Гб на базу']
+        features: [
+          { text: '10 баз приложений', available: true },
+          { text: '5 одновременных сеансов', available: true },
+          { text: 'До 100 ЭДО бесплатно', available: true },
+          { text: '1С-Отчетность', available: true },
+          { text: 'Электронная подпись', available: true }
+        ]
       }
     ]
   };
@@ -128,23 +167,31 @@ export default function Pricing() {
                   <span className="text-4xl font-display font-bold text-gray-900">
                     {plan.price}
                   </span>
-                  <span className="text-gray-600 ml-2">₽/месяц</span>
+                  <span className="text-gray-600 ml-2">{plan.isFree ? '' : '₽/месяц'}</span>
                 </div>
               </CardHeader>
               <CardContent className="p-8 pt-0">
                 <ul className="space-y-3 mb-8">
-                  {plan.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-start">
-                      <Icon name="Check" className="text-green-500 mr-3 mt-0.5 flex-shrink-0" size={16} />
-                      <span className="text-gray-600">{feature}</span>
-                    </li>
-                  ))}
+                  {plan.features.map((feature: any, featureIndex: number) => {
+                    const isAvailable = typeof feature === 'string' ? true : feature.available;
+                    const text = typeof feature === 'string' ? feature : feature.text;
+                    return (
+                      <li key={featureIndex} className="flex items-start">
+                        <Icon 
+                          name={isAvailable ? "Check" : "X"} 
+                          className={`${isAvailable ? 'text-green-500' : 'text-red-500'} mr-3 mt-0.5 flex-shrink-0`} 
+                          size={16} 
+                        />
+                        <span className="text-gray-600">{text}</span>
+                      </li>
+                    );
+                  })}
                 </ul>
                 <Button 
                   onClick={() => handlePlanSelection(plan, selectedPlan)}
-                  className={`w-full ${plan.popular ? 'bg-orange-500 hover:bg-orange-600' : 'bg-gray-900 hover:bg-gray-800'} text-white rounded-[30px]`}
+                  className={`w-full ${plan.popular ? 'bg-orange-500 hover:bg-orange-600' : plan.isFree ? 'bg-green-500 hover:bg-green-600' : 'bg-gray-900 hover:bg-gray-800'} text-white rounded-[30px]`}
                 >
-                  Выбрать план
+                  {plan.isFree ? 'Попробовать бесплатно' : 'Выбрать план'}
                 </Button>
               </CardContent>
             </Card>
