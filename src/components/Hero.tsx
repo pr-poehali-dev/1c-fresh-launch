@@ -46,18 +46,17 @@ export default function Hero() {
     <section className="pt-20 md:pt-24 lg:pt-20 pb-12 md:pb-16 relative overflow-hidden min-h-screen flex items-center bg-white">
       {/* Animated Gradient Blob */}
       {/* Desktop version - properly centered */}
-      <div className="hidden md:block absolute inset-0">
+      <div className="hidden md:block absolute inset-0 flex items-center justify-center">
         <div
-          className="animate-float-blob w-full h-full opacity-90"
+          className="animate-float-blob opacity-90"
           style={{
             background:
               'url("https://cdn.poehali.dev/files/3e6d04f2-9a72-40f3-9a00-96b245d87d4f.png")',
             backgroundSize: "contain",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center center",
-            maxWidth: "1980px",
-            margin: "-200px auto",
-            transform: "translateX(-50%)",
+            width: "800px",
+            height: "400px",
           }}
         ></div>
       </div>
