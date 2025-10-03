@@ -139,26 +139,28 @@ export default function Hero() {
         </div>
 
         {/* Advantage Cards in Hero */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mt-12 md:mt-16 lg:mt-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mt-12 md:mt-16 lg:mt-20">
           {advantages.map((advantage, index) => (
             <Card
               key={index}
-              className="bg-white/90 backdrop-blur-sm border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-white"
+              className="bg-white/90 backdrop-blur-sm border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-white rounded-[30px]"
             >
-              <CardContent className="p-4 md:p-6 text-center">
-                <div className="bg-orange-100 rounded-full w-12 md:w-16 h-12 md:h-16 flex items-center justify-center mx-auto mb-3 md:mb-4">
+              <CardContent className="p-4 md:p-6 flex items-start gap-4">
+                <div className="bg-orange-100 rounded-full w-12 h-12 flex items-center justify-center flex-shrink-0">
                   <Icon
                     name={advantage.icon}
                     className="text-orange-500"
                     size={24}
                   />
                 </div>
-                <h3 className="font-display font-semibold text-sm md:text-base text-gray-900 mb-2 leading-tight">
-                  {advantage.title}
-                </h3>
-                <p className="text-xs md:text-sm text-gray-600 leading-relaxed">
-                  {advantage.description}
-                </p>
+                <div className="flex-1">
+                  <h3 className="font-display font-semibold text-sm md:text-base text-gray-900 mb-2 leading-tight">
+                    {advantage.title}
+                  </h3>
+                  <p className="text-xs md:text-sm text-gray-600 leading-relaxed">
+                    {advantage.description}
+                  </p>
+                </div>
               </CardContent>
             </Card>
           ))}
