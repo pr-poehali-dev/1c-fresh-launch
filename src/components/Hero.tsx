@@ -51,7 +51,7 @@ export default function Hero() {
           className="animate-float-blob w-full h-full opacity-90"
           style={{
             background:
-              'url("../img/abf41b44-2c91-4b72-91e7-9567e81a7898.svg")',
+              'url("https://cdn.poehali.dev/files/3e6d04f2-9a72-40f3-9a00-96b245d87d4f.png")',
             backgroundSize: "contain",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center center",
@@ -68,7 +68,7 @@ export default function Hero() {
           className="animate-float-blob w-[110%] h-[350px] opacity-70"
           style={{
             background:
-              'url("../img/abf41b44-2c91-4b72-91e7-9567e81a7898.svg")',
+              'url("https://cdn.poehali.dev/files/3e6d04f2-9a72-40f3-9a00-96b245d87d4f.png")',
             backgroundSize: "contain",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
