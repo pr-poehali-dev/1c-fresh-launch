@@ -51,13 +51,13 @@ export default function Hero() {
           className="animate-float-blob w-full h-full opacity-90"
           style={{
             background:
-              'url("https://cdn.poehali.dev/files/abf41b44-2c91-4b72-91e7-9567e81a7898.jpg")',
+              'url("../img/abf41b44-2c91-4b72-91e7-9567e81a7898.svg")',
             backgroundSize: "contain",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center center",
-            maxWidth: "1200px",
-            margin: "0 auto",
-            transform: "translateX(-50%)"
+            maxWidth: "1980px",
+            margin: "-200px auto",
+            transform: "translateX(-50%)",
           }}
         ></div>
       </div>
@@ -68,7 +68,7 @@ export default function Hero() {
           className="animate-float-blob w-[110%] h-[350px] opacity-70"
           style={{
             background:
-              'url("https://cdn.poehali.dev/files/abf41b44-2c91-4b72-91e7-9567e81a7898.jpg")',
+              'url("../img/abf41b44-2c91-4b72-91e7-9567e81a7898.svg")',
             backgroundSize: "contain",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
@@ -80,14 +80,29 @@ export default function Hero() {
         <div className="text-center">
           {/* Logo Icon */}
           <div className="flex justify-center mb-6">
-            <img 
-              src="https://cdn.poehali.dev/files/071560b3-cf4c-4f4b-80d7-19ada40d191c.jpg" 
-              alt="1C Logo" 
+            <svg
               className="h-16 md:h-20 lg:h-24 w-auto"
-            />
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 100 100"
+            >
+              <path
+                d="M0.5 13.4375H5.9V43H11.3V8.0625H0.5V13.4375Z"
+                fill="#F0F0F0"
+              />
+              <path
+                d="M5.90039 5.375H14.0004V43H19.4004V0H5.90039V5.375ZM30.2004 21.5C30.2004 12.6071 37.4661 5.375 46.4004 5.375C55.3347 5.375 62.6004 12.6071 62.6004 21.5H68.0004C68.0004 9.64544 58.3101 0 46.4004 0C34.4907 0 24.8004 9.64544 24.8004 21.5C24.8004 33.3546 34.4907 43 46.4004 43H81.5004V37.625H46.4004C37.4661 37.625 30.2004 30.3929 30.2004 21.5Z"
+                fill="#F0F0F0"
+              />
+              <path
+                d="M46.3996 26.875C43.4215 26.875 40.9996 24.4643 40.9996 21.5C40.9996 18.5357 43.4215 16.125 46.3996 16.125C49.3777 16.125 51.7996 18.5357 51.7996 21.5H57.1996C57.1996 15.5714 52.3558 10.75 46.3996 10.75C40.4434 10.75 35.5996 15.5714 35.5996 21.5C35.5996 27.4286 40.4434 32.25 46.3996 32.25H81.4996V26.875H46.3996Z"
+                fill="#F0F0F0"
+              />
+            </svg>
           </div>
-
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-4 md:mb-6 leading-tight" style={{ color: '#cccccc' }}>
+          <h1
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-4 md:mb-6 leading-tight"
+            style={{ color: "#FFFFFF" }}
+          >
             ПРОФЕССИОНАЛЬНЫЕ
             <br />
             ПОДПИСКИ НА 1C FRESH
@@ -150,13 +165,15 @@ export default function Hero() {
           ))}
         </div>
       </div>
-      
+
       {showOrderForm && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           {telegramWebApp.isInTelegram ? (
             <div className="bg-white rounded-lg p-6 max-w-md w-full">
               <div className="flex justify-between items-center mb-4">
-                <h3 className="text-lg font-semibold">Консультация по 1C Fresh</h3>
+                <h3 className="text-lg font-semibold">
+                  Консультация по 1C Fresh
+                </h3>
                 <Button
                   variant="ghost"
                   size="sm"
@@ -166,7 +183,7 @@ export default function Hero() {
                   <Icon name="X" size={16} />
                 </Button>
               </div>
-              <TelegramContactForm 
+              <TelegramContactForm
                 title="Консультация по 1C Fresh"
                 subtitle="Бесплатная консультация по выбору оптимального тарифа"
                 onSuccess={() => setShowOrderForm(false)}
