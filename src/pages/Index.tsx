@@ -6,7 +6,6 @@ import Pricing from '@/components/Pricing';
 import HowToStart from '@/components/HowToStart';
 import FAQ from '@/components/FAQ';
 import Contact from '@/components/Contact';
-import CompanyInfo from '@/components/CompanyInfo';
 import Footer from '@/components/Footer';
 import CookieConsent from '@/components/CookieConsent';
 import { useTelegramWebApp } from '@/hooks/useTelegramWebApp';
@@ -37,7 +36,6 @@ export default function Index() {
       <HowToStart />
       <FAQ />
       <Contact />
-      <CompanyInfo />
       
       {/* Показываем футер только если НЕ в Telegram */}
       {!telegramWebApp.isInTelegram && <Footer />}

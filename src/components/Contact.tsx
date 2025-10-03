@@ -18,6 +18,7 @@ import { useTelegramWebApp } from "@/hooks/useTelegramWebApp";
 
 export default function Contact() {
   const [showOrderForm, setShowOrderForm] = useState(false);
+  const [activeTab, setActiveTab] = useState<'contact' | 'company'>('contact');
   
   const handleCallbackRequest = () => {
     setShowOrderForm(true);
@@ -109,93 +110,182 @@ export default function Contact() {
           )}
 
           <div className="space-y-8">
-            <div>
-              <h3 className="font-display font-bold text-xl text-gray-900 mb-6">
+            {/* Tabs */}
+            <div className="flex gap-4 border-b border-gray-200">
+              <button
+                onClick={() => setActiveTab('contact')}
+                className={`pb-3 px-4 font-semibold transition-colors relative ${
+                  activeTab === 'contact'
+                    ? 'text-orange-500'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
                 Контактная информация
-              </h3>
-              <div className="space-y-4">
-                <div className="flex items-start">
-                  <Icon
-                    name="Phone"
-                    className="text-orange-500 mr-3 mt-1"
-                    size={20}
-                  />
-                  <div>
-                    <p className="font-semibold text-gray-900">Телефон</p>
-                    <p className="text-gray-600">+7 (342) 270‒00‒01</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <Icon
-                    name="Mail"
-                    className="text-orange-500 mr-3 mt-1"
-                    size={20}
-                  />
-                  <div>
-                    <p className="font-semibold text-gray-900">Email</p>
-                    <p className="text-gray-600">ivanickiy@centerai.tech</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <Icon
-                    name="Clock"
-                    className="text-orange-500 mr-3 mt-1"
-                    size={20}
-                  />
-                  <div>
-                    <p className="font-semibold text-gray-900">Режим работы</p>
-                    <p className="text-gray-600">
-                      Пн-Пт: 9:00-18:00
-                      <br />
-                      Поддержка: 24/7
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <Icon
-                    name="MapPin"
-                    className="text-orange-500 mr-3 mt-1"
-                    size={20}
-                  />
-                  <div>
-                    <p className="font-semibold text-gray-900">Адрес</p>
-                    <p className="text-gray-600">
-                      614007, Пермский край, город Пермь,
-                      <br />
-                      ул. Революции, д. 14, кв. 57
-                    </p>
-                  </div>
-                </div>
-              </div>
+                {activeTab === 'contact' && (
+                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-orange-500" />
+                )}
+              </button>
+              <button
+                onClick={() => setActiveTab('company')}
+                className={`pb-3 px-4 font-semibold transition-colors relative ${
+                  activeTab === 'company'
+                    ? 'text-orange-500'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                Реквизиты компании
+                {activeTab === 'company' && (
+                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-orange-500" />
+                )}
+              </button>
             </div>
 
-            <Card className="p-6 bg-gradient-to-br from-orange-50 to-indigo-50 border-orange-200">
-              <CardContent className="p-0">
-                <h4 className="font-display font-semibold text-lg text-gray-900 mb-2">
-                  Нужна консультация?
-                </h4>
-                <p className="text-gray-600 mb-4">
-                  Наши специалисты помогут подобрать оптимальное решение для
-                  вашего бизнеса
-                </p>
-                <div className="space-y-2">
-                  <Button 
-                    onClick={handleCallbackRequest}
-                    className="bg-orange-500 hover:bg-orange-600 text-white rounded-[30px]"
-                  >
-                    <Icon name="Phone" size={16} className="mr-2" />
-                    Заказать звонок
-                  </Button>
-                  <Button 
-                    onClick={testTelegramBot}
-                    variant="outline" 
-                    className="w-full rounded-[30px]"
-                  >
-                    🧪 Тест Telegram бота
-                  </Button>
+            {/* Contact Info Tab */}
+            {activeTab === 'contact' && (
+              <div className="space-y-8 animate-in fade-in duration-300">
+                <div className="space-y-4">
+                  <div className="flex items-start">
+                    <Icon
+                      name="Phone"
+                      className="text-orange-500 mr-3 mt-1"
+                      size={20}
+                    />
+                    <div>
+                      <p className="font-semibold text-gray-900">Телефон</p>
+                      <p className="text-gray-600">+7 (342) 270‒00‒01</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <Icon
+                      name="Mail"
+                      className="text-orange-500 mr-3 mt-1"
+                      size={20}
+                    />
+                    <div>
+                      <p className="font-semibold text-gray-900">Email</p>
+                      <p className="text-gray-600">ivanickiy@centerai.tech</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <Icon
+                      name="Clock"
+                      className="text-orange-500 mr-3 mt-1"
+                      size={20}
+                    />
+                    <div>
+                      <p className="font-semibold text-gray-900">Режим работы</p>
+                      <p className="text-gray-600">
+                        Пн-Пт: 9:00-18:00
+                        <br />
+                        Поддержка: 24/7
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <Icon
+                      name="MapPin"
+                      className="text-orange-500 mr-3 mt-1"
+                      size={20}
+                    />
+                    <div>
+                      <p className="font-semibold text-gray-900">Адрес</p>
+                      <p className="text-gray-600">
+                        614007, Пермский край, город Пермь,
+                        <br />
+                        ул. Революции, д. 14, кв. 57
+                      </p>
+                    </div>
+                  </div>
                 </div>
-              </CardContent>
-            </Card>
+
+                <Card className="p-6 bg-gradient-to-br from-orange-50 to-indigo-50 border-orange-200">
+                  <CardContent className="p-0">
+                    <h4 className="font-display font-semibold text-lg text-gray-900 mb-2">
+                      Нужна консультация?
+                    </h4>
+                    <p className="text-gray-600 mb-4">
+                      Наши специалисты помогут подобрать оптимальное решение для
+                      вашего бизнеса
+                    </p>
+                    <div className="space-y-2">
+                      <Button 
+                        onClick={handleCallbackRequest}
+                        className="bg-orange-500 hover:bg-orange-600 text-white rounded-[30px]"
+                      >
+                        <Icon name="Phone" size={16} className="mr-2" />
+                        Заказать звонок
+                      </Button>
+                      <Button 
+                        onClick={testTelegramBot}
+                        variant="outline" 
+                        className="w-full rounded-[30px]"
+                      >
+                        🧪 Тест Telegram бота
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            )}
+
+            {/* Company Info Tab */}
+            {activeTab === 'company' && (
+              <div className="space-y-6 animate-in fade-in duration-300">
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="font-display font-bold text-lg text-gray-900 flex items-center">
+                      <Icon name="Building" className="text-orange-500 mr-3" size={20} />
+                      Юридическая информация
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-3">
+                    <div>
+                      <p className="text-sm text-gray-500">Полное наименование</p>
+                      <p className="text-gray-900 font-medium">Данные будут добавлены</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-500">ИНН</p>
+                      <p className="text-gray-900 font-medium">Данные будут добавлены</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-500">КПП</p>
+                      <p className="text-gray-900 font-medium">Данные будут добавлены</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-500">ОГРН</p>
+                      <p className="text-gray-900 font-medium">Данные будут добавлены</p>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="font-display font-bold text-lg text-gray-900 flex items-center">
+                      <Icon name="CreditCard" className="text-orange-500 mr-3" size={20} />
+                      Банковские реквизиты
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-3">
+                    <div>
+                      <p className="text-sm text-gray-500">Расчетный счет</p>
+                      <p className="text-gray-900 font-medium">Данные будут добавлены</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-500">Банк</p>
+                      <p className="text-gray-900 font-medium">Данные будут добавлены</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-500">БИК</p>
+                      <p className="text-gray-900 font-medium">Данные будут добавлены</p>
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-500">Корр. счет</p>
+                      <p className="text-gray-900 font-medium">Данные будут добавлены</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            )}
           </div>
         </div>
       </div>

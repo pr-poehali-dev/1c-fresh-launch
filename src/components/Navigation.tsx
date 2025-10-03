@@ -26,7 +26,6 @@ export default function Navigation() {
             <a href="#pricing" className="text-gray-600 hover:text-orange-500 transition-colors">Тарифы</a>
             <a href="#faq" className="text-gray-600 hover:text-orange-500 transition-colors">FAQ</a>
             <a href="#contact" className="text-gray-600 hover:text-orange-500 transition-colors">Контакты</a>
-            <a href="#company-info" className="text-gray-600 hover:text-orange-500 transition-colors">Реквизиты</a>
           </div>
           
           <div className="flex items-center space-x-2">
@@ -69,9 +68,6 @@ export default function Navigation() {
               </a>
               <a href="#contact" className="block text-gray-600 hover:text-orange-500 transition-colors py-2" onClick={() => setIsMenuOpen(false)}>
                 Контакты
-              </a>
-              <a href="#company-info" className="block text-gray-600 hover:text-orange-500 transition-colors py-2" onClick={() => setIsMenuOpen(false)}>
-                Реквизиты
               </a>
               <div className="pt-2 border-t border-gray-100">
                 <Button 
