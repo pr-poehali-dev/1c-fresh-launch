@@ -3,7 +3,7 @@ import Icon from '@/components/ui/icon';
 export default function Footer() {
   return (
     <footer className="bg-gray-900 text-white py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1980px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
             <div className="text-2xl font-display font-bold bg-gradient-to-r from-orange-500 to-indigo-500 bg-clip-text text-transparent mb-4">

@@ -76,7 +76,7 @@ export default function Hero() {
         ></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative w-full z-10">
+      <div className="max-w-[1980px] mx-auto px-4 sm:px-6 lg:px-8 relative w-full z-10">
         <div className="text-center">
           {/* Logo Icon */}
           <div className="flex justify-center mb-6">
