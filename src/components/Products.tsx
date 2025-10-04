@@ -104,12 +104,15 @@ export default function Products() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {products.map((product, index) => (
             <Card key={index} className="group hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-200 rounded-[30px]">
-              <div className="aspect-[4/3] overflow-hidden">
+              <div className="aspect-[4/3] overflow-hidden relative">
                 <img 
                   src={product.image} 
                   alt={product.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
+                <div className="absolute bottom-4 left-4 bg-gradient-to-br from-orange-500 to-indigo-500 rounded-full w-12 h-12 flex items-center justify-center shadow-lg">
+                  <Icon name={product.icon} className="text-white" size={24} />
+                </div>
               </div>
               <CardContent className="p-6">
                 <h3 className="font-display font-bold text-lg text-gray-900 mb-3">
@@ -200,12 +203,15 @@ export default function Products() {
                       <CarouselContent>
                         {selectedProduct.sliderImages?.map((image: string, index: number) => (
                           <CarouselItem key={index}>
-                            <div className="rounded-[30px] overflow-hidden">
+                            <div className="rounded-[30px] overflow-hidden relative">
                               <img 
                                 src={image} 
                                 alt={`${selectedProduct.title} - ${index + 1}`}
                                 className="w-full h-auto object-cover"
                               />
+                              <div className="absolute bottom-4 left-4 bg-gradient-to-br from-orange-500 to-indigo-500 rounded-full w-12 h-12 flex items-center justify-center shadow-lg">
+                                <Icon name={selectedProduct.icon} className="text-white" size={24} />
+                              </div>
                             </div>
                           </CarouselItem>
                         ))}
