@@ -9,6 +9,7 @@ export default function Pricing() {
   const [selectedPlan, setSelectedPlan] = useState('6months');
   const [showOrderForm, setShowOrderForm] = useState(false);
   const [orderFormData, setOrderFormData] = useState({ serviceType: '', serviceDetails: '', price: '' });
+  const [activePlanIndex, setActivePlanIndex] = useState(1);
 
   const handlePlanSelection = (plan: any, period: string) => {
     const featuresText = plan.features.map((f: any) => typeof f === 'string' ? f : f.text).join(', ');
@@ -32,82 +33,82 @@ export default function Pricing() {
   const plans = {
     '6months': [
       {
-        name: 'Базовый',
-        description: 'Для малого бизнеса и ИП',
-        price: '1,724',
+        name: 'Бесплатно 14 дней',
+        description: '10 баз, 5 пользователей',
+        price: '0',
         features: [
-          '5 пользователей',
-          '20 ГБ места для данных',
-          'Консультации специалиста',
-          'Все конфигурации 1С',
-          'Приоритетная поддержка'
-        ]
+          { text: '10 баз приложений', available: true },
+          { text: '5 одновременных сеансов', available: true },
+          { text: 'До 50 ЭДО бесплатно', available: false },
+          { text: 'Доступ к 1С:ИТС', available: false },
+          { text: '1С-Отчетность', available: false }
+        ],
+        isFree: true
       },
       {
-        name: 'Профессиональный',
-        description: 'Для среднего бизнеса',
-        price: '5,308',
+        name: 'БАЗОВЫЙ',
+        description: '1 база, 2 пользователя',
+        price: '1,730',
         features: [
-          '5 пользователей',
-          '20 ГБ места для данных',
-          'Консультации специалиста',
-          'Все конфигурации 1С',
-          'Приоритетная поддержка'
+          { text: '1 база любого приложения', available: true },
+          { text: '2 одновременных сеанса', available: true },
+          { text: 'До 50 ЭДО бесплатно', available: true },
+          { text: 'Доступ к 1С:ИТС', available: true },
+          { text: 'Техническая поддержка', available: true }
         ],
         popular: true
       },
       {
-        name: 'Корпорация',
-        description: 'Для крупного бизнеса',
-        price: '8,848',
+        name: 'ПРОФ',
+        description: '10 баз, 5 пользователей',
+        price: '5,310',
         features: [
-          '5 пользователей',
-          '20 ГБ места для данных',
-          'Консультации специалиста',
-          'Все конфигурации 1С',
-          'Приоритетная поддержка'
-        ],
-        highlighted: true
+          { text: '10 баз приложений', available: true },
+          { text: '5 одновременных сеансов', available: true },
+          { text: 'До 100 ЭДО бесплатно', available: true },
+          { text: '1С-Отчетность', available: true },
+          { text: 'Электронная подпись', available: true }
+        ]
       }
     ],
     '12months': [
       {
-        name: 'Базовый',
-        description: 'Для малого бизнеса и ИП',
-        price: '1,640',
+        name: 'Бесплатно 14 дней',
+        description: '10 баз, 5 пользователей',
+        price: '0',
         features: [
-          '5 пользователей',
-          '20 ГБ места для данных',
-          'Консультации специалиста',
-          'Все конфигурации 1С',
-          'Приоритетная поддержка'
-        ]
+          { text: '10 баз приложений', available: true },
+          { text: '5 одновременных сеансов', available: true },
+          { text: 'До 50 ЭДО бесплатно', available: false },
+          { text: 'Доступ к 1С:ИТС', available: false },
+          { text: '1С-Отчетность', available: false }
+        ],
+        isFree: true
       },
       {
-        name: 'Профессиональный',
-        description: 'Для среднего бизнеса',
-        price: '4,999',
+        name: 'БАЗОВЫЙ',
+        description: '1 база, 2 пользователя',
+        price: '1,640',
         features: [
-          '5 пользователей',
-          '20 ГБ места для данных',
-          'Консультации специалиста',
-          'Все конфигурации 1С',
-          'Приоритетная поддержка'
+          { text: '1 база любого приложения', available: true },
+          { text: '2 одновременных сеанса', available: true },
+          { text: 'До 50 ЭДО бесплатно', available: true },
+          { text: 'Доступ к 1С:ИТС', available: true },
+          { text: 'Техническая поддержка', available: true }
         ],
         popular: true
       },
       {
-        name: 'Корпорация',
-        description: 'Для крупного бизнеса',
-        price: '8,100',
+        name: 'ПРОФ',
+        description: '10 баз, 5 пользователей',
+        price: '4,999',
         features: [
-          '5 пользователей',
-          '20 ГБ места для данных',
-          'Консультации специалиста',
-          'Все конфигурации 1С',
-          'Приоритетная поддержка'
-        ],
-        highlighted: true
+          { text: '10 баз приложений', available: true },
+          { text: '5 одновременных сеансов', available: true },
+          { text: 'До 100 ЭДО бесплатно', available: true },
+          { text: '1С-Отчетность', available: true },
+          { text: 'Электронная подпись', available: true }
+        ]
       }
     ]
   };
@@ -151,70 +152,82 @@ export default function Pricing() {
         <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {/* Left column - pricing cards */}
           <div className="space-y-4">
-            {plans[selectedPlan].map((plan, index) => (
-              <div
-                key={index}
-                className={`relative rounded-[40px] px-8 py-6 flex items-center justify-between transition-all ${
-                  plan.highlighted
-                    ? 'bg-gradient-to-r from-orange-400 to-yellow-400 text-white shadow-xl'
-                    : plan.popular
-                    ? 'bg-white border-2 border-gray-900 shadow-lg'
-                    : 'bg-white border border-gray-300 shadow-sm hover:shadow-md'
-                }`}
-              >
-                {plan.popular && (
-                  <div className="absolute -left-3 top-1/2 -translate-y-1/2 bg-gray-900 text-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg">
-                    <Icon name="Check" size={20} />
+            {plans[selectedPlan].map((plan, index) => {
+              const isActive = activePlanIndex === index;
+              const isHighlighted = plan.isFree ? false : index === plans[selectedPlan].length - 1;
+              
+              return (
+                <div
+                  key={index}
+                  onClick={() => setActivePlanIndex(index)}
+                  className={`relative rounded-[40px] px-8 py-6 flex items-center justify-between transition-all cursor-pointer ${
+                    isHighlighted
+                      ? 'bg-gradient-to-r from-orange-400 to-yellow-400 text-white shadow-xl'
+                      : plan.popular
+                      ? 'bg-white border-2 border-gray-900 shadow-lg hover:shadow-xl'
+                      : 'bg-white border border-gray-300 shadow-sm hover:shadow-md'
+                  } ${isActive ? 'ring-4 ring-orange-300' : ''}`}
+                >
+                  {plan.popular && (
+                    <div className="absolute -left-3 top-1/2 -translate-y-1/2 bg-gray-900 text-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg">
+                      <Icon name="Check" size={20} />
+                    </div>
+                  )}
+                  {isHighlighted && (
+                    <div className="absolute -left-3 top-1/2 -translate-y-1/2 bg-white text-orange-500 rounded-full w-10 h-10 flex items-center justify-center shadow-lg">
+                      <Icon name="Star" size={20} fill="currentColor" />
+                    </div>
+                  )}
+                  <div className={`flex-1 ${plan.popular || isHighlighted ? 'pl-4' : ''}`}>
+                    <h3 className={`font-bold text-xl mb-1 ${
+                      isHighlighted ? 'text-white' : 'text-gray-900'
+                    }`}>
+                      {plan.name}
+                    </h3>
+                    <p className={`text-sm ${
+                      isHighlighted ? 'text-white/90' : 'text-gray-600'
+                    }`}>
+                      {plan.description}
+                    </p>
                   </div>
-                )}
-                {plan.highlighted && (
-                  <div className="absolute -left-3 top-1/2 -translate-y-1/2 bg-white text-orange-500 rounded-full w-10 h-10 flex items-center justify-center shadow-lg">
-                    <Icon name="Star" size={20} fill="currentColor" />
+                  <div className="text-right">
+                    <div className={`text-3xl font-bold ${
+                      isHighlighted ? 'text-white' : 'text-gray-900'
+                    }`}>
+                      {plan.price} <span className="text-lg font-normal">₽</span>
+                    </div>
+                    <div className={`text-sm ${
+                      isHighlighted ? 'text-white/80' : 'text-gray-500'
+                    }`}>
+                      {plan.isFree ? '' : '/МЕСЯЦ'}
+                    </div>
                   </div>
-                )}
-                <div className={`flex-1 ${plan.popular || plan.highlighted ? 'pl-4' : ''}`}>
-                  <h3 className={`font-bold text-xl mb-1 ${
-                    plan.highlighted ? 'text-white' : 'text-gray-900'
-                  }`}>
-                    {plan.name}
-                  </h3>
-                  <p className={`text-sm ${
-                    plan.highlighted ? 'text-white/90' : 'text-gray-600'
-                  }`}>
-                    {plan.description}
-                  </p>
                 </div>
-                <div className="text-right">
-                  <div className={`text-3xl font-bold ${
-                    plan.highlighted ? 'text-white' : 'text-gray-900'
-                  }`}>
-                    {plan.price} <span className="text-lg font-normal">₽</span>
-                  </div>
-                  <div className={`text-sm ${
-                    plan.highlighted ? 'text-white/80' : 'text-gray-500'
-                  }`}>
-                    /МЕСЯЦ
-                  </div>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           {/* Right column - features list */}
           <div className="bg-white rounded-[40px] border border-gray-200 p-8 shadow-lg">
             <h3 className="font-bold text-xl text-gray-900 mb-6">Включает:</h3>
             <ul className="space-y-4">
-              {plans[selectedPlan][0].features.map((feature: string, index: number) => (
-                <li key={index} className="flex items-start">
-                  <div className="bg-gray-900 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
-                    <Icon name="Check" className="text-white" size={14} />
-                  </div>
-                  <span className="text-gray-700">{feature}</span>
-                </li>
-              ))}
+              {plans[selectedPlan][activePlanIndex].features.map((feature: any, index: number) => {
+                const isAvailable = typeof feature === 'string' ? true : feature.available;
+                const text = typeof feature === 'string' ? feature : feature.text;
+                return (
+                  <li key={index} className="flex items-start">
+                    <div className={`rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-0.5 flex-shrink-0 ${
+                      isAvailable ? 'bg-gray-900' : 'bg-gray-300'
+                    }`}>
+                      <Icon name={isAvailable ? "Check" : "X"} className="text-white" size={14} />
+                    </div>
+                    <span className={`${isAvailable ? 'text-gray-700' : 'text-gray-400'}`}>{text}</span>
+                  </li>
+                );
+              })}
             </ul>
             <Button
-              onClick={() => handlePlanSelection(plans[selectedPlan][1], selectedPlan)}
+              onClick={() => handlePlanSelection(plans[selectedPlan][activePlanIndex], selectedPlan)}
               className="w-full mt-8 bg-white text-gray-900 border-2 border-gray-900 hover:bg-gray-900 hover:text-white rounded-[30px] py-6 text-lg font-semibold"
             >
               Оформить подписку
