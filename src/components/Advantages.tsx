@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import Icon from '@/components/ui/icon';
 
 export default function Advantages() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
 
   const advantagesList = [
     {
@@ -44,6 +46,33 @@ export default function Advantages() {
     }
   ];
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+    
+    if (isLeftSwipe && activeIndex < advantagesList.length - 1) {
+      setActiveIndex(activeIndex + 1);
+    }
+    
+    if (isRightSwipe && activeIndex > 0) {
+      setActiveIndex(activeIndex - 1);
+    }
+    
+    setTouchStart(0);
+    setTouchEnd(0);
+  };
+
   return (
     <section id="advantages" className="py-20 bg-white">
       <div className="max-w-[1980px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -56,7 +85,8 @@ export default function Advantages() {
           </p>
         </div>
         
-        <div className="grid lg:grid-cols-2 gap-8 items-center">
+        {/* Desktop version */}
+        <div className="hidden lg:grid lg:grid-cols-2 gap-8 items-center">
           {/* Image slider on the left */}
           <div className="order-2 lg:order-1 overflow-hidden" style={{ borderTopRightRadius: '30px', borderBottomRightRadius: '30px' }}>
             <div className="relative w-full aspect-[4/3]">
@@ -89,6 +119,50 @@ export default function Advantages() {
                 <h3 className="font-bold text-lg text-gray-900 mb-2">{item.title}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
               </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Mobile slider */}
+        <div className="lg:hidden">
+          <div 
+            className="relative overflow-hidden"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
+            <div 
+              className="flex transition-transform duration-300 ease-out"
+              style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+            >
+              {advantagesList.map((item, index) => (
+                <div key={index} className="w-full flex-shrink-0 px-4">
+                  <Card className="text-center p-6">
+                    <CardContent className="p-0">
+                      <div className="bg-gray-100 rounded-full w-20 h-20 flex items-center justify-center mb-4 mx-auto">
+                        <img src={item.icon} alt={item.title} className="w-12 h-12 object-contain" />
+                      </div>
+                      <h3 className="font-bold text-xl text-gray-900 mb-3">{item.title}</h3>
+                      <p className="text-gray-600 leading-relaxed">{item.description}</p>
+                    </CardContent>
+                  </Card>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Dots navigation */}
+          <div className="flex justify-center gap-2 mt-6">
+            {advantagesList.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setActiveIndex(index)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  index === activeIndex 
+                    ? 'bg-orange-500 w-8' 
+                    : 'bg-gray-300'
+                }`}
+              />
             ))}
           </div>
         </div>
