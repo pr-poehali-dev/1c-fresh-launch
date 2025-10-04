@@ -66,8 +66,8 @@ export default function Products() {
       image: 'https://cdn.poehali.dev/files/f110eb28-cebc-46d9-af7a-9343e2c02271.png',
       sliderImages: [
         'https://cdn.poehali.dev/files/f110eb28-cebc-46d9-af7a-9343e2c02271.png',
-        'https://1cfresh.com/resources/images/content/solutions/sbm/slide-1.png',
-        'https://1cfresh.com/resources/images/content/solutions/sbm/slide-2.png'
+        'https://cdn.poehali.dev/files/d61a4092-9725-424a-bcf6-fc4cec47d15e.png',
+        'https://cdn.poehali.dev/files/3f3ff1fb-f606-45e6-a067-b590ee39bc0f.png'
       ],
       icon: 'Building',
       features: [
