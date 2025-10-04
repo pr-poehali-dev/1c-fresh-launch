@@ -125,8 +125,8 @@ export default {
 				'float': 'float 3s ease-in-out infinite'
 			},
 			fontFamily: {
-				'sans': ['Open Sans', 'system-ui', 'sans-serif'],
-				'display': ['Montserrat', 'system-ui', 'sans-serif']
+				'sans': ['Helvetica', 'Arial', 'sans-serif'],
+				'display': ['Alegreya Sans SC', 'sans-serif']
 			}
 		}
 	},
