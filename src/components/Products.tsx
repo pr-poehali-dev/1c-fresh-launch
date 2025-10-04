@@ -173,16 +173,12 @@ export default function Products() {
                   </div>
                   
                   <div className="order-1 md:order-2">
-                    <div className="bg-gradient-to-br from-orange-50 to-indigo-50 rounded-2xl p-8 text-center">
-                      <div className="bg-gradient-to-br from-orange-500 to-indigo-500 rounded-3xl w-32 h-32 flex items-center justify-center mx-auto mb-6">
-                        <Icon name={selectedProduct.icon} className="text-white" size={64} />
-                      </div>
-                      <h4 className="font-display font-bold text-xl text-gray-900 mb-2">
-                        {selectedProduct.title}
-                      </h4>
-                      <p className="text-gray-600">
-                        Профессиональное решение для вашего бизнеса
-                      </p>
+                    <div className="rounded-[30px] overflow-hidden">
+                      <img 
+                        src={selectedProduct.image} 
+                        alt={selectedProduct.title}
+                        className="w-full h-auto object-cover"
+                      />
                     </div>
                   </div>
                 </div>
