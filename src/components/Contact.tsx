@@ -69,15 +69,19 @@ export default function Contact() {
   return (
     <section id="contact" className="py-20 bg-white">
       <div className="max-w-[1980px] mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="mb-12">
+          <h2 className="text-4xl font-display font-bold text-gray-900 mb-4 uppercase">
+            Остались вопросы?
+          </h2>
+          <p className="text-gray-500">
+            Напишите нам, и мы подробно ответим на все ваши вопросы по подпискам 1C Fresh
+          </p>
+        </div>
+
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Left side - Form */}
           <div>
-            <h2 className="text-4xl font-display font-bold text-gray-900 mb-4 uppercase">
-              Остались вопросы?
-            </h2>
-            <p className="text-gray-500 mb-8">
-              Напишите нам, и мы подробно ответим на все ваши вопросы по подпискам 1C Fresh
-            </p>
 
             {/* Используем Telegram форму если запущено в Telegram, обычную в браузере */}
             {telegramWebApp.isInTelegram ? (
