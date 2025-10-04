@@ -44,7 +44,6 @@ export default function Hero() {
 
   return (
     <section className="pt-20 md:pt-24 lg:pt-20 pb-12 md:pb-16 relative overflow-hidden min-h-screen flex items-center bg-white">
-      {/* Animated Gradient Blob */}
       {/* Desktop version - properly centered */}
       <div className="hidden md:block absolute inset-0">
         <div
@@ -62,61 +61,58 @@ export default function Hero() {
         ></div>
       </div>
 
-      {/* Mobile version - behind text and above buttons */}
-      <div className="md:hidden absolute top-0 left-0 w-full h-full flex items-start justify-center pt-24">
+      {/* Mobile version - rounded gradient background */}
+      <div className="md:hidden absolute top-0 left-0 w-full h-[600px] overflow-hidden">
         <div
-          className="animate-float-blob w-[110%] h-[350px] opacity-70"
+          className="w-[140%] h-[600px] -ml-[20%] rounded-b-[50%] absolute top-0"
           style={{
-            background:
-              'url("https://cdn.poehali.dev/files/3e6d04f2-9a72-40f3-9a00-96b245d87d4f.png")',
-            backgroundSize: "contain",
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "center",
+            background: "linear-gradient(180deg, #FFC107 0%, #FF9800 50%, #FF6B9D 100%)",
           }}
         ></div>
       </div>
 
       <div className="max-w-[1980px] mx-auto px-4 sm:px-6 lg:px-8 relative w-full z-10">
-        <div className="text-center">
+        <div className="text-center md:text-center">
           {/* Logo Icon */}
-          <div className="flex justify-center mb-6">
+          <div className="flex justify-start md:justify-center mb-6 md:mb-6 ml-2 md:ml-0">
             <svg
-              className="h-16 md:h-20 lg:h-24 w-auto"
+              className="h-12 md:h-20 lg:h-24 w-auto"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 100 100"
             >
               <path
                 d="M0.5 13.4375H5.9V43H11.3V8.0625H0.5V13.4375Z"
-                className="fill-[#2f2e2e] md:fill-[#F0F0F0]"
+                className="fill-white md:fill-[#F0F0F0]"
               />
               <path
                 d="M5.90039 5.375H14.0004V43H19.4004V0H5.90039V5.375ZM30.2004 21.5C30.2004 12.6071 37.4661 5.375 46.4004 5.375C55.3347 5.375 62.6004 12.6071 62.6004 21.5H68.0004C68.0004 9.64544 58.3101 0 46.4004 0C34.4907 0 24.8004 9.64544 24.8004 21.5C24.8004 33.3546 34.4907 43 46.4004 43H81.5004V37.625H46.4004C37.4661 37.625 30.2004 30.3929 30.2004 21.5Z"
-                className="fill-[#2f2e2e] md:fill-[#F0F0F0]"
+                className="fill-white md:fill-[#F0F0F0]"
               />
               <path
                 d="M46.3996 26.875C43.4215 26.875 40.9996 24.4643 40.9996 21.5C40.9996 18.5357 43.4215 16.125 46.3996 16.125C49.3777 16.125 51.7996 18.5357 51.7996 21.5H57.1996C57.1996 15.5714 52.3558 10.75 46.3996 10.75C40.4434 10.75 35.5996 15.5714 35.5996 21.5C35.5996 27.4286 40.4434 32.25 46.3996 32.25H81.4996V26.875H46.3996Z"
-                className="fill-[#2f2e2e] md:fill-[#F0F0F0]"
+                className="fill-white md:fill-[#F0F0F0]"
               />
             </svg>
           </div>
           <h1
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-4 md:mb-6 leading-tight text-[#2f2e2e] md:text-white"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-4 md:mb-6 leading-tight text-white md:text-white text-left md:text-center px-2 md:px-0"
           >
             ПРОФЕССИОНАЛЬНЫЕ
             <br />
             ПОДПИСКИ НА 1C FRESH
           </h1>
 
-          <p className="text-lg sm:text-xl md:text-2xl mb-8 md:mb-12 max-w-4xl mx-auto leading-relaxed text-[#2f2e2e] md:text-gray-700">
+          <p className="text-base sm:text-lg md:text-2xl mb-8 md:mb-12 max-w-4xl mx-auto leading-relaxed text-white md:text-gray-700 text-left md:text-center px-2 md:px-0">
             Официальный партнер 1C Fresh.
             <br />
-            Без серверов, без сложных настроек — просто работайте!
+            Без серверов, без сложных настроек —
+            <br className="md:hidden" /> просто работайте!
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col gap-4 px-2 md:px-0 md:flex-row md:justify-center">
             <Button
               size="lg"
-              className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-lg font-semibold rounded-[30px] shadow-lg hover:shadow-xl transition-all"
+              className="bg-white hover:bg-gray-100 text-gray-900 md:bg-orange-500 md:hover:bg-orange-600 md:text-white px-8 py-6 md:py-4 text-base md:text-lg font-semibold rounded-[30px] shadow-lg hover:shadow-xl transition-all w-full md:w-auto"
               onClick={() =>
                 document
                   .getElementById("pricing")
@@ -124,16 +120,16 @@ export default function Hero() {
               }
             >
               Выбрать тариф
-              <Icon name="ArrowRight" size={20} className="ml-2" />
+              <Icon name="ArrowRight" size={20} className="ml-2 hidden md:inline" />
             </Button>
             <Button
               variant="outline"
               size="lg"
               onClick={handleConsultation}
-              className="border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white px-8 py-4 text-lg font-semibold rounded-[30px] transition-all"
+              className="border-2 border-white text-white hover:bg-white/20 md:border-orange-500 md:text-orange-500 md:hover:bg-orange-500 md:hover:text-white px-8 py-6 md:py-4 text-base md:text-lg font-semibold rounded-[30px] transition-all w-full md:w-auto"
             >
               Консультация
-              <Icon name="MessageCircle" size={20} className="ml-2" />
+              <Icon name="MessageCircle" size={20} className="ml-2 hidden md:inline" />
             </Button>
           </div>
         </div>
