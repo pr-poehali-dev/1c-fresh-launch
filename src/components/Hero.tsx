@@ -112,7 +112,7 @@ export default function Hero() {
           <div className="flex flex-col gap-4 px-2 md:px-0 md:flex-row md:justify-center">
             <Button
               size="lg"
-              className="bg-white hover:bg-white text-gray-900 hover:text-[#FA9014] md:bg-orange-500 md:hover:bg-orange-600 md:text-white md:hover:text-white px-8 py-6 md:py-4 text-base md:text-lg font-semibold rounded-[30px] shadow-lg hover:shadow-xl transition-all w-full md:w-auto"
+              className="bg-white hover:bg-white text-gray-900 hover:text-[#FA9014] md:bg-orange-500 md:hover:bg-orange-600 md:text-white px-8 py-6 md:py-4 text-base md:text-lg font-semibold rounded-[30px] shadow-lg hover:shadow-xl transition-all w-full md:w-auto"
               onClick={() =>
                 document
                   .getElementById("pricing")
