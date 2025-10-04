@@ -15,6 +15,8 @@ export default function Products() {
   const [selectedProduct, setSelectedProduct] = useState<any>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
 
   const products = [
     {
@@ -89,6 +91,33 @@ export default function Products() {
     setSelectedProduct(null);
   };
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+    
+    if (isLeftSwipe && currentSlide < products.length - 1) {
+      setCurrentSlide(currentSlide + 1);
+    }
+    
+    if (isRightSwipe && currentSlide > 0) {
+      setCurrentSlide(currentSlide - 1);
+    }
+    
+    setTouchStart(0);
+    setTouchEnd(0);
+  };
+
   return (
     <section id="products" className="py-20 bg-white">
       <div className="max-w-[1980px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -101,7 +130,8 @@ export default function Products() {
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Desktop grid */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {products.map((product, index) => (
             <Card key={index} className="group hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-200 rounded-[30px]">
               <div className="aspect-[4/3] overflow-hidden relative">
@@ -140,6 +170,77 @@ export default function Products() {
               </CardContent>
             </Card>
           ))}
+        </div>
+
+        {/* Mobile carousel */}
+        <div className="md:hidden">
+          <div 
+            className="relative overflow-hidden"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
+            <div 
+              className="flex transition-transform duration-300 ease-out"
+              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+            >
+              {products.map((product, index) => (
+                <div key={index} className="w-full flex-shrink-0 px-4">
+                  <Card className="overflow-hidden border border-gray-200 rounded-[30px]">
+                    <div className="aspect-[4/3] overflow-hidden relative">
+                      <img 
+                        src={product.image} 
+                        alt={product.title}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute bottom-4 left-4 bg-gradient-to-br from-orange-500 to-indigo-500 rounded-full w-12 h-12 flex items-center justify-center shadow-lg">
+                        <Icon name={product.icon} className="text-white" size={24} />
+                      </div>
+                    </div>
+                    <CardContent className="p-6">
+                      <h3 className="font-display font-bold text-lg text-gray-900 mb-3">
+                        {product.title}
+                      </h3>
+                      <p className="text-gray-600 text-sm leading-relaxed mb-6">
+                        {product.description}
+                      </p>
+                      <div className="flex flex-col gap-3">
+                        <Button 
+                          variant="outline" 
+                          className="w-full border-gray-300 text-gray-700 hover:bg-gray-50 rounded-[30px]"
+                          onClick={() => openModal(product)}
+                        >
+                          Подробнее
+                        </Button>
+                        <Button 
+                          variant="outline" 
+                          className="w-full border-gray-900 text-gray-900 hover:bg-gray-50 rounded-[30px] font-medium"
+                          onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
+                        >
+                          Выбрать тариф
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Dots navigation */}
+          <div className="flex justify-center gap-2 mt-6">
+            {products.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentSlide(index)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  index === currentSlide 
+                    ? 'bg-orange-500 w-8' 
+                    : 'bg-gray-300'
+                }`}
+              />
+            ))}
+          </div>
         </div>
 
         {/* Modal */}
