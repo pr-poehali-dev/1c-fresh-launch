@@ -112,7 +112,7 @@ export default function Hero() {
           <div className="flex flex-col gap-4 px-2 md:px-0 md:flex-row md:justify-center">
             <Button
               size="lg"
-              className="bg-white hover:bg-gray-100 text-gray-900 md:bg-orange-500 md:hover:bg-orange-600 md:text-white px-8 py-6 md:py-4 text-base md:text-lg font-semibold rounded-[30px] shadow-lg hover:shadow-xl transition-all w-full md:w-auto"
+              className="bg-white hover:bg-white text-gray-900 hover:text-[#FA9014] md:bg-orange-500 md:hover:bg-orange-600 md:text-white md:hover:text-white px-8 py-6 md:py-4 text-base md:text-lg font-semibold rounded-[30px] shadow-lg hover:shadow-xl transition-all w-full md:w-auto"
               onClick={() =>
                 document
                   .getElementById("pricing")
@@ -126,7 +126,7 @@ export default function Hero() {
               variant="outline"
               size="lg"
               onClick={handleConsultation}
-              className="border-2 border-white text-white hover:bg-white/20 md:border-orange-500 md:text-orange-500 md:hover:bg-orange-500 md:hover:text-white px-8 py-6 md:py-4 text-base md:text-lg font-semibold rounded-[30px] transition-all w-full md:w-auto"
+              className="border-2 border-gray-900 bg-transparent text-gray-900 hover:bg-gray-900/70 hover:text-[#FA9014] md:border-orange-500 md:text-orange-500 md:hover:bg-orange-500 md:hover:text-white px-8 py-6 md:py-4 text-base md:text-lg font-semibold rounded-[30px] transition-all w-full md:w-auto"
             >
               Консультация
               <Icon name="MessageCircle" size={20} className="ml-2 hidden md:inline" />
