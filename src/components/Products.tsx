@@ -26,8 +26,8 @@ export default function Products() {
       image: 'https://cdn.poehali.dev/files/04e368c8-f4e0-434b-8b9b-2444d2ea8e45.png',
       sliderImages: [
         'https://cdn.poehali.dev/files/04e368c8-f4e0-434b-8b9b-2444d2ea8e45.png',
-        'https://1cfresh.com/resources/images/content/solutions/ea/slide-1.png',
-        'https://1cfresh.com/resources/images/content/solutions/ea/slide-2.png'
+        'https://cdn.poehali.dev/files/db9e0f18-f43f-4531-8755-45c1510ee4fb.png',
+        'https://cdn.poehali.dev/files/b3ce5b62-5af5-4c5e-8e99-ec2d038fc487.png'
       ],
       icon: 'Calculator',
       features: [
