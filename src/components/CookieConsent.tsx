@@ -13,8 +13,26 @@ export default function CookieConsent() {
     }
   }, []);
 
-  const handleAccept = () => {
+  const handleAccept = async () => {
+    const userId = localStorage.getItem('userId') || `user-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+    localStorage.setItem('userId', userId);
     localStorage.setItem('cookieConsent', 'accepted');
+    
+    try {
+      await fetch('https://functions.poehali.dev/075a5669-28e4-4134-a210-d0f245c3c818', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          user_id: userId,
+          action: 'accepted'
+        })
+      });
+    } catch (error) {
+      console.error('Failed to send consent notification:', error);
+    }
+    
     setIsVisible(false);
   };
 
@@ -44,7 +62,7 @@ export default function CookieConsent() {
               анализа посещаемости и предоставления персонализированного контента в соответствии с 
               <span className="font-medium"> Федеральным законом №152-ФЗ "О персональных данных"</span>.
               Продолжая использовать сайт, вы соглашаетесь с нашей{' '}
-              <a href="#" className="text-orange-500 hover:text-orange-600 underline">
+              <a href="https://disk.360.yandex.ru/i/0I6mvCXKNWPNwg" target="_blank" rel="noopener noreferrer" className="text-orange-500 hover:text-orange-600 underline">
                 Политикой конфиденциальности
               </a>{' '}
               и{' '}
