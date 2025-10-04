@@ -36,9 +36,7 @@ export default function Index() {
       <HowToStart />
       <FAQ />
       <Contact />
-      
-      {/* Показываем футер только если НЕ в Telegram */}
-      {!telegramWebApp.isInTelegram && <Footer />}
+      <Footer />
       
       {/* Cookie Consent */}
       <CookieConsent />
