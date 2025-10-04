@@ -1,57 +1,55 @@
-import Icon from '@/components/ui/icon';
-
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-white py-12">
+    <footer className="bg-[#2b2b2b] text-white py-6">
       <div className="max-w-[1980px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div>
-            <div className="text-2xl font-display font-bold bg-gradient-to-r from-orange-500 to-indigo-500 bg-clip-text text-transparent mb-4">
-              1C FRESH
-            </div>
-            <p className="text-gray-400 mb-4">
-              Официальный партнер 1C Fresh. Надежные облачные решения для вашего бизнеса.
-            </p>
-            <div className="flex space-x-4">
-              <Icon name="Phone" className="text-orange-500" size={20} />
-              <Icon name="Mail" className="text-orange-500" size={20} />
-              <Icon name="MessageCircle" className="text-orange-500" size={20} />
-            </div>
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+          {/* Logo */}
+          <div className="flex items-center">
+            <img 
+              src="https://cdn.poehali.dev/files/60f6e4ba-6cd7-4a2f-b901-af03c01a29c0.png" 
+              alt="1C Logo" 
+              className="h-12"
+            />
           </div>
           
-          <div>
-            <h4 className="font-display font-semibold text-lg mb-4">Услуги</h4>
-            <ul className="space-y-2 text-gray-400">
-              <li><a href="#products" className="hover:text-orange-500 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' }); }}>1С:Бухгалтерия</a></li>
-              <li><a href="#products" className="hover:text-orange-500 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' }); }}>1С:Зарплата и кадры</a></li>
-              <li><a href="#products" className="hover:text-orange-500 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' }); }}>1С:Управление фирмой</a></li>
-              <li><a href="#products" className="hover:text-orange-500 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' }); }}>1С:ERP</a></li>
-            </ul>
+          {/* Copyright */}
+          <div className="text-center text-gray-400 text-sm">
+            © 2023 Официальный партнер 1C Fresh. Все права защищены.
           </div>
           
-          <div>
-            <h4 className="font-display font-semibold text-lg mb-4">Компания</h4>
-            <ul className="space-y-2 text-gray-400">
-              <li><a href="#advantages" className="hover:text-orange-500 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); document.getElementById('advantages')?.scrollIntoView({ behavior: 'smooth' }); }}>О нас</a></li>
-              <li><a href="#faq" className="hover:text-orange-500 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' }); }}>Новости</a></li>
-              <li><a href="#contact" className="hover:text-orange-500 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }}>Партнерство</a></li>
-              <li><a href="#pricing" className="hover:text-orange-500 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' }); }}>Тарифы</a></li>
-            </ul>
+          {/* Social Icons */}
+          <div className="flex items-center gap-3">
+            <a 
+              href="https://t.me/your_channel" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="w-8 h-8 bg-white rounded flex items-center justify-center hover:bg-gray-200 transition-colors"
+            >
+              <svg className="w-4 h-4 text-[#2b2b2b]" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.5 1.201-.82 1.23-.697.064-1.226-.461-1.901-.903-1.056-.692-1.653-1.123-2.678-1.799-1.185-.781-.417-1.21.258-1.911.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.139-5.062 3.345-.479.329-.913.489-1.302.481-.428-.008-1.252-.241-1.865-.44-.752-.244-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635.099-.002.321.023.465.141.121.099.154.232.17.326.016.094.036.308.02.476z"/>
+              </svg>
+            </a>
+            <a 
+              href="https://vk.com/your_page" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="w-8 h-8 bg-white rounded flex items-center justify-center hover:bg-gray-200 transition-colors"
+            >
+              <svg className="w-4 h-4 text-[#2b2b2b]" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm6.066 13.544c.51.487 1.047 1.024 1.484 1.582.195.248.379.503.535.776.22.386.02.81-.36.832l-2.368-.001c-.61.05-1.096-.193-1.508-.609-.328-.331-.632-.685-.948-1.028-.132-.144-.269-.279-.429-.39-.297-.207-.556-.147-.737.117-.184.267-.227.575-.248.886-.029.434-.223.548-.656.568-1.017.047-1.98-.118-2.88-.625-.783-.44-1.388-1.074-1.93-1.762-1.054-1.338-1.868-2.822-2.614-4.348-.133-.272-.038-.418.256-.425.484-.011.968-.011 1.451-.001.195.004.328.115.408.297.449 1.018.984 1.977 1.654 2.856.178.235.358.469.607.624.278.173.49.119.619-.188.082-.195.123-.403.145-.613.07-.664.078-1.327-.022-1.989-.055-.365-.25-.601-.614-.673-.186-.037-.158-.11-.068-.222.138-.17.268-.278.527-.278h1.947c.307.061.375.199.417.507l.002 2.162c-.005.162.08.643.372.75.235.08.39-.115.532-.267.637-.687 1.091-1.5 1.496-2.348.177-.372.328-.757.474-1.144.109-.288.28-.431.596-.426l2.531.002c.075 0 .151.001.224.017.363.081.463.285.348.636-.18.55-.508 1.006-.828 1.468-.34.49-.696.97-1.03 1.467-.309.458-.286.687.108 1.072z"/>
+              </svg>
+            </a>
+            <a 
+              href="https://wa.me/your_number" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="w-8 h-8 bg-white rounded flex items-center justify-center hover:bg-gray-200 transition-colors"
+            >
+              <svg className="w-4 h-4 text-[#2b2b2b]" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.246-.926-3.468.001-3.825 3.113-6.937 6.937-6.937 1.856.001 3.598.723 4.907 2.034 1.31 1.311 2.031 3.054 2.03 4.908-.001 3.825-3.113 6.938-6.937 6.938z"/>
+              </svg>
+            </a>
           </div>
-          
-          <div>
-            <h4 className="font-display font-semibold text-lg mb-4">Поддержка</h4>
-            <ul className="space-y-2 text-gray-400">
-              <li><a href="#faq" className="hover:text-orange-500 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' }); }}>База знаний</a></li>
-              <li><a href="#faq" className="hover:text-orange-500 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' }); }}>Документация</a></li>
-              <li><a href="#faq" className="hover:text-orange-500 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' }); }}>Обучение</a></li>
-              <li><a href="#contact" className="hover:text-orange-500 transition-colors cursor-pointer" onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }}>Контакты</a></li>
-            </ul>
-          </div>
-        </div>
-        
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-          <p>&copy; 2025 Официальный партнер 1C Fresh. Все права защищены.</p>
         </div>
       </div>
     </footer>
