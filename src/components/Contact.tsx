@@ -201,7 +201,10 @@ export default function Contact() {
                       <p className="text-white/90">
                         Пн-Пт: 9:00-18:00
                         <br />
-                        Поддержка: 24/7
+                        Поддержка: 24/7{' '}
+                        <a href="tel:88003337227" className="hover:text-white hover:underline transition-all">
+                          8 (800) 333-72-27
+                        </a>
                       </p>
                     </div>
                   </div>
