@@ -172,7 +172,9 @@ export default function Contact() {
                     />
                     <div>
                       <p className="font-semibold">Телефон</p>
-                      <p className="text-white/90">+7 (342) 270‒00‒01</p>
+                      <a href="tel:+73422700001" className="text-white/90 hover:text-white hover:underline transition-all">
+                        +7 (342) 270‒00‒01
+                      </a>
                     </div>
                   </div>
                   <div className="flex items-start text-white">
@@ -183,7 +185,9 @@ export default function Contact() {
                     />
                     <div>
                       <p className="font-semibold">Email</p>
-                      <p className="text-white/90">ivanickiy@centerai.tech</p>
+                      <a href="mailto:ivanickiy@centerai.tech" className="text-white/90 hover:text-white hover:underline transition-all">
+                        ivanickiy@centerai.tech
+                      </a>
                     </div>
                   </div>
                   <div className="flex items-start text-white">
