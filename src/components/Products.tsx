@@ -40,8 +40,8 @@ export default function Products() {
       ]
     },
     {
-      title: '1С:ERP Управление предприятием 2',
-      description: 'Комплексное решение для управления ресурсами предприятия различных масштабов.',
+      title: '1С:Управление нашей фирмой',
+      description: 'Современное решение для комплексной автоматизации малого бизнеса.',
       fullDescription: 'Простое и удобное решение для автоматизации учета и управления в малом бизнесе. Программа позволяет вести учет товаров и услуг, контрагентов, денежных средств, а также формировать необходимые документы и отчеты. Подходит для организаций с небольшим объемом операций.',
       image: 'https://cdn.poehali.dev/files/f110eb28-cebc-46d9-af7a-9343e2c02271.png',
       icon: 'Building',
@@ -95,13 +95,22 @@ export default function Products() {
                 <p className="text-gray-600 text-sm leading-relaxed mb-6">
                   {product.description}
                 </p>
-                <Button 
-                  variant="outline" 
-                  className="w-full border-gray-900 text-gray-900 hover:bg-gray-50 rounded-[30px] font-medium"
-                  onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
-                >
-                  Выбрать тариф
-                </Button>
+                <div className="flex flex-col gap-3">
+                  <Button 
+                    variant="outline" 
+                    className="w-full border-gray-300 text-gray-700 hover:bg-gray-50 rounded-[30px]"
+                    onClick={() => openModal(product)}
+                  >
+                    Подробнее
+                  </Button>
+                  <Button 
+                    variant="outline" 
+                    className="w-full border-gray-900 text-gray-900 hover:bg-gray-50 rounded-[30px] font-medium"
+                    onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
+                  >
+                    Выбрать тариф
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           ))}
