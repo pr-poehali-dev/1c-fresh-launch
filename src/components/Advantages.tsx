@@ -33,7 +33,7 @@ export default function Advantages() {
       image: 'https://1cfresh.com/resources/images/content/why/slide-4.jpg'
     },
     {
-      icon: 'https://cdn.poehali.dev/files/d1f82b9b-5429-4b0b-acf8-42c1a0cd5091.png',
+      icon: 'https://cdn.poehali.dev/files/3e1d6523-8683-4a0c-b736-9c73c6c023e2.png',
       title: 'Доступ откуда угодно',
       description: 'Работайте с 1С из офиса, дома или в командировке с любого устройства. Нужен только интернет и браузер.',
       image: 'https://1cfresh.com/resources/images/content/why/slide-5.jpg'
