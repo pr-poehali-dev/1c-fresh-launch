@@ -46,8 +46,8 @@ export default function FAQ() {
               Ответы на наиболее популярные вопросы о сервисе amoCRM
             </p>
             
-            {/* Rutube Video Embed */}
-            <div className="aspect-video bg-gray-100 rounded-lg overflow-hidden">
+            {/* Rutube Video Embed - hidden on mobile */}
+            <div className="hidden lg:block aspect-video bg-gray-100 rounded-lg overflow-hidden">
               <iframe 
                 src="https://rutube.ru/play/embed/2d92c19297394084e43ab966c8f50a53/"
                 frameBorder="0" 
