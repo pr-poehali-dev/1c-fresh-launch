@@ -55,19 +55,13 @@ export default function CookieConsent() {
           
           <div className="flex-1">
             <h3 className="font-display font-bold text-lg text-gray-900 mb-2">
-              Согласие на обработку персональных данных
+              Использование файлов cookie
             </h3>
             <p className="text-gray-600 text-sm leading-relaxed">
-              Мы используем файлы cookie и обрабатываем персональные данные для улучшения работы сайта, 
-              анализа посещаемости и предоставления персонализированного контента в соответствии с 
-              <span className="font-medium"> Федеральным законом №152-ФЗ "О персональных данных"</span>.
+              Мы используем файлы cookie для улучшения работы сайта и анализа посещаемости.
               Продолжая использовать сайт, вы соглашаетесь с нашей{' '}
               <a href="https://disk.360.yandex.ru/i/0I6mvCXKNWPNwg" target="_blank" rel="noopener noreferrer" className="text-orange-500 hover:text-orange-600 underline">
                 Политикой конфиденциальности
-              </a>{' '}
-              и{' '}
-              <a href="#" className="text-orange-500 hover:text-orange-600 underline">
-                Пользовательским соглашением
               </a>.
             </p>
           </div>
