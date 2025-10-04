@@ -226,44 +226,27 @@ export default function Contact() {
                     <div className="space-y-3 text-white">
                       <div>
                         <p className="text-sm text-white/70">Полное наименование</p>
-                        <p className="font-medium">Данные будут добавлены</p>
+                        <p className="font-medium">ООО "МОЛОТОВ ТРАСТ"</p>
                       </div>
                       <div>
                         <p className="text-sm text-white/70">ИНН</p>
-                        <p className="font-medium">Данные будут добавлены</p>
+                        <p className="font-medium">5906060110</p>
                       </div>
                       <div>
                         <p className="text-sm text-white/70">КПП</p>
-                        <p className="font-medium">Данные будут добавлены</p>
+                        <p className="font-medium">590401001</p>
                       </div>
                       <div>
-                        <p className="text-sm text-white/70">ОГРН</p>
-                        <p className="font-medium">Данные будут добавлены</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
-                    <h3 className="font-display font-bold text-lg text-white flex items-center mb-4">
-                      <Icon name="CreditCard" className="mr-3" size={20} />
-                      Банковские реквизиты
-                    </h3>
-                    <div className="space-y-3 text-white">
-                      <div>
-                        <p className="text-sm text-white/70">Расчетный счет</p>
-                        <p className="font-medium">Данные будут добавлены</p>
+                        <p className="text-sm text-white/70">ОКПО</p>
+                        <p className="font-medium">73907860</p>
                       </div>
                       <div>
-                        <p className="text-sm text-white/70">Банк</p>
-                        <p className="font-medium">Данные будут добавлены</p>
+                        <p className="text-sm text-white/70">Директор</p>
+                        <p className="font-medium">Иваницкая Е. С.</p>
                       </div>
                       <div>
-                        <p className="text-sm text-white/70">БИК</p>
-                        <p className="font-medium">Данные будут добавлены</p>
-                      </div>
-                      <div>
-                        <p className="text-sm text-white/70">Корр. счет</p>
-                        <p className="font-medium">Данные будут добавлены</p>
+                        <p className="text-sm text-white/70">Партнер 1С Fresh</p>
+                        <p className="font-medium">Код № 56678-57</p>
                       </div>
                     </div>
                   </div>
