@@ -1,7 +1,24 @@
+import { useState, useEffect } from 'react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import Icon from '@/components/ui/icon';
 
 export default function FAQ() {
+  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+  
+  const videos = [
+    'https://rutube.ru/play/embed/65cbf55962ba91cdd6e5bf428f9129e5/',
+    'https://rutube.ru/play/embed/a7caca849e981fb92a567e5694057359/',
+    'https://rutube.ru/play/embed/cad31522e38cb1a6d5c6c2b52a8945e9/'
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentVideoIndex((prevIndex) => (prevIndex + 1) % videos.length);
+    }, 10000);
+
+    return () => clearInterval(interval);
+  }, [videos.length]);
+
   const faqs = [
     {
       question: 'Для чего нужен 1cfresh.com?',
@@ -46,15 +63,32 @@ export default function FAQ() {
               Ответы на наиболее популярные вопросы о сервисе amoCRM
             </p>
             
-            {/* Rutube Video Embed - hidden on mobile */}
-            <div className="hidden lg:block aspect-video bg-gray-100 rounded-lg overflow-hidden">
+            {/* Rutube Video Embed - hidden on mobile, rotating videos on desktop */}
+            <div className="hidden lg:block aspect-video bg-gray-100 rounded-lg overflow-hidden relative">
               <iframe 
-                src="https://rutube.ru/play/embed/2d92c19297394084e43ab966c8f50a53/"
+                key={currentVideoIndex}
+                src={videos[currentVideoIndex]}
                 frameBorder="0" 
                 allow="clipboard-write; autoplay" 
                 allowFullScreen
                 className="w-full h-full"
               ></iframe>
+              
+              {/* Video indicators */}
+              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-10">
+                {videos.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentVideoIndex(index)}
+                    className={`w-2 h-2 rounded-full transition-all ${
+                      index === currentVideoIndex 
+                        ? 'bg-white w-6' 
+                        : 'bg-white/50 hover:bg-white/75'
+                    }`}
+                    aria-label={`Видео ${index + 1}`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
 
