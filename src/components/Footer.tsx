@@ -20,7 +20,7 @@ export default function Footer() {
           {/* Social Icons */}
           <div className="flex items-center gap-3">
             <a 
-              href="https://t.me/your_channel" 
+              href="https://t.me/cai1c_bot" 
               target="_blank" 
               rel="noopener noreferrer"
               className="w-8 h-8 bg-white rounded flex items-center justify-center hover:bg-gray-200 transition-colors"
@@ -30,7 +30,7 @@ export default function Footer() {
               </svg>
             </a>
             <a 
-              href="https://wa.me/73422700001" 
+              href="https://wa.me/79129800084" 
               target="_blank" 
               rel="noopener noreferrer"
               className="w-8 h-8 bg-white rounded flex items-center justify-center hover:bg-gray-200 transition-colors"
