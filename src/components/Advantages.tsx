@@ -39,7 +39,7 @@ export default function Advantages() {
       image: 'https://1cfresh.com/resources/images/content/why/slide-5.jpg'
     },
     {
-      icon: 'https://cdn.poehali.dev/files/96e91cc7-46f1-4b66-b4f9-f8ccf4bbf24e.png',
+      icon: 'https://cdn.poehali.dev/files/a0d74622-45df-43f3-83f8-b3f78b7f7366.png',
       title: 'Экономия бюджета',
       description: 'Не тратьте деньги на серверы, ИТ-специалистов и лицензии. Оплачивайте только тот функционал, который вам нужен.',
       image: 'https://1cfresh.com/resources/images/content/why/slide-6.jpg'
