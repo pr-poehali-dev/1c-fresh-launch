@@ -10,9 +10,10 @@ export default function Products() {
 
   const products = [
     {
-      title: '1С:Бухгалтерия 8',
-      description: 'Комплексное решение для автоматизации бухгалтерского и налогового учета',
+      title: '1С:БУХГАЛТЕРИЯ 8',
+      description: 'Комплексное решение для автоматизации бухгалтерского и налогового учета.',
       fullDescription: 'Программа 1С:Бухгалтерия 8 предназначена для автоматизации бухгалтерского и налогового учета в организациях, осуществляющих любые виды коммерческой деятельности. Ведение учета в программе организовано в соответствии с требованиями российского законодательства. Программа обеспечивает ведение учета хозяйственной деятельности в соответствии с требованиями российского законодательства: ведение книги покупок и книги продаж, формирование деклараций по НДС, налогу на прибыль, расчет налога на имущество и земельного налога.',
+      image: 'https://cdn.poehali.dev/files/29005a74-6fe9-46f5-980b-17bf12fce54a.png',
       icon: 'Calculator',
       features: [
         'Ведение бухгалтерского учета',
@@ -24,9 +25,10 @@ export default function Products() {
       ]
     },
     {
-      title: '1С:Зарплата и управление персоналом 8',
-      description: 'Автоматизация кадрового учета, расчета зарплаты и управления персоналом',
+      title: '1С:ЗАРПЛАТА И УПРАВЛЕНИЕ ПЕРСОНАЛОМ 8',
+      description: 'Автоматизация кадрового учета, расчета заработной платы и кадрового делопроизводства.',
       fullDescription: 'Программа предназначена для автоматизации кадрового учета и расчета заработной платы в организациях различных форм собственности. Обеспечивает решение задач комплексной автоматизации расчета заработной платы и управления персоналом, включая ведение кадрового учета, табельного учета, расчета всех видов оплат и удержаний сотрудников, налогов и взносов.',
+      image: 'https://cdn.poehali.dev/files/232c97f2-0267-45ce-a55a-6fb7f725f5cd.png',
       icon: 'Users',
       features: [
         'Кадровый учет сотрудников',
@@ -38,9 +40,10 @@ export default function Products() {
       ]
     },
     {
-      title: '1С:Управление нашей фирмой',
-      description: 'Современное решение для комплексной автоматизации малого бизнеса',
+      title: '1С:ERP УПРАВЛЕНИЕ ПРЕДПРИЯТИЕМ 2',
+      description: 'Комплексное решение для управления ресурсами предприятия различных масштабов.',
       fullDescription: 'Простое и удобное решение для автоматизации учета и управления в малом бизнесе. Программа позволяет вести учет товаров и услуг, контрагентов, денежных средств, а также формировать необходимые документы и отчеты. Подходит для организаций с небольшим объемом операций.',
+      image: 'https://cdn.poehali.dev/files/669d3a11-3ee2-4e02-b43f-c11989da5558.png',
       icon: 'Building',
       features: [
         'Простой интерфейс',
@@ -77,33 +80,28 @@ export default function Products() {
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {products.map((product, index) => (
-            <Card key={index} className="group hover:shadow-xl transition-all duration-300 overflow-hidden">
-              <CardHeader className="bg-gradient-to-br from-gray-50 to-gray-100 p-8">
-                <div className="bg-gradient-to-br from-orange-500 to-indigo-500 rounded-2xl w-16 h-16 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <Icon name={product.icon} className="text-white" size={32} />
-                </div>
-                <CardTitle className="font-display font-bold text-xl text-gray-900">{product.title}</CardTitle>
-              </CardHeader>
+            <Card key={index} className="group hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-200 rounded-[30px]">
+              <div className="aspect-[4/3] overflow-hidden">
+                <img 
+                  src={product.image} 
+                  alt={product.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
               <CardContent className="p-6">
-                <CardDescription className="text-gray-600 text-base leading-relaxed mb-6">
+                <h3 className="font-display font-bold text-lg text-gray-900 mb-3">
+                  {product.title}
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed mb-6">
                   {product.description}
-                </CardDescription>
-                <div className="flex flex-col gap-3">
-                  <Button 
-                    variant="outline" 
-                    className="w-full border-gray-300 text-gray-700 hover:bg-gray-50 rounded-[30px]"
-                    onClick={() => openModal(product)}
-                  >
-                    Подробнее
-                  </Button>
-                  <Button 
-                    variant="outline" 
-                    className="w-full border-orange-500 text-orange-500 hover:bg-orange-50 rounded-[30px]"
-                    onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
-                  >
-                    Выбрать тариф
-                  </Button>
-                </div>
+                </p>
+                <Button 
+                  variant="outline" 
+                  className="w-full border-gray-900 text-gray-900 hover:bg-gray-50 rounded-[30px] font-medium"
+                  onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
+                >
+                  Выбрать тариф
+                </Button>
               </CardContent>
             </Card>
           ))}
