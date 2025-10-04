@@ -10,7 +10,7 @@ export default function Advantages() {
       icon: 'https://cdn.poehali.dev/files/f39461bd-9724-47be-9362-a4631464d743.png',
       title: 'Быстрый старт',
       description: 'Начните работу уже сегодня без закупки оборудования и лицензий. Просто выберите нужную программу 1С и начинайте работать.',
-      image: 'https://1cfresh.com/resources/images/content/why/slide-1.jpg'
+      image: 'https://cdn.poehali.dev/files/d5aeb505-189a-4ef9-9b56-8e210dd6df06.png'
     },
     {
       icon: 'https://cdn.poehali.dev/files/bc931099-356b-4db2-a48e-07d2e419ac72.png',
