@@ -3,17 +3,30 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import Icon from '@/components/ui/icon';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/ui/carousel';
 
 export default function Products() {
   const [selectedProduct, setSelectedProduct] = useState<any>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   const products = [
     {
       title: '1С:Бухгалтерия 8',
       description: 'Комплексное решение для автоматизации бухгалтерского и налогового учета.',
-      fullDescription: 'Программа 1С:Бухгалтерия 8 предназначена для автоматизации бухгалтерского и налогового учета в организациях, осуществляющих любые виды коммерческой деятельности. Ведение учета в программе организовано в соответствии с требованиями российского законодательства. Программа обеспечивает ведение учета хозяйственной деятельности в соответствии с требованиями российского законодательства: ведение книги покупок и книги продаж, формирование деклараций по НДС, налогу на прибыль, расчет налога на имущество и земельного налога.',
+      fullDescription: 'Программа 1с:Бухгалтерия 8 предназначена для автоматизации бухгалтерского и налогового учета в организациях, осуществляющих любые виды коммерческой деятельности.',
       image: 'https://cdn.poehali.dev/files/04e368c8-f4e0-434b-8b9b-2444d2ea8e45.png',
+      sliderImages: [
+        'https://cdn.poehali.dev/files/04e368c8-f4e0-434b-8b9b-2444d2ea8e45.png',
+        'https://1cfresh.com/resources/images/content/solutions/ea/slide-1.png',
+        'https://1cfresh.com/resources/images/content/solutions/ea/slide-2.png'
+      ],
       icon: 'Calculator',
       features: [
         'Ведение бухгалтерского учета',
@@ -27,8 +40,13 @@ export default function Products() {
     {
       title: '1С:Зарплата и управление персоналом 8',
       description: 'Автоматизация кадрового учета, расчета заработной платы и кадрового делопроизводства.',
-      fullDescription: 'Программа предназначена для автоматизации кадрового учета и расчета заработной платы в организациях различных форм собственности. Обеспечивает решение задач комплексной автоматизации расчета заработной платы и управления персоналом, включая ведение кадрового учета, табельного учета, расчета всех видов оплат и удержаний сотрудников, налогов и взносов.',
+      fullDescription: 'Программа предназначена для автоматизации кадрового учета и расчета заработной платы в организациях различных форм собственности.',
       image: 'https://cdn.poehali.dev/files/d4d52983-a447-47da-8365-55c422fe5030.png',
+      sliderImages: [
+        'https://cdn.poehali.dev/files/d4d52983-a447-47da-8365-55c422fe5030.png',
+        'https://1cfresh.com/resources/images/content/solutions/hrm/slide-1.png',
+        'https://1cfresh.com/resources/images/content/solutions/hrm/slide-2.png'
+      ],
       icon: 'Users',
       features: [
         'Кадровый учет сотрудников',
@@ -42,8 +60,13 @@ export default function Products() {
     {
       title: '1С:Управление нашей фирмой',
       description: 'Современное решение для комплексной автоматизации малого бизнеса.',
-      fullDescription: 'Простое и удобное решение для автоматизации учета и управления в малом бизнесе. Программа позволяет вести учет товаров и услуг, контрагентов, денежных средств, а также формировать необходимые документы и отчеты. Подходит для организаций с небольшим объемом операций.',
+      fullDescription: 'Простое и удобное решение для автоматизации учета и управления в малом бизнесе.',
       image: 'https://cdn.poehali.dev/files/f110eb28-cebc-46d9-af7a-9343e2c02271.png',
+      sliderImages: [
+        'https://cdn.poehali.dev/files/f110eb28-cebc-46d9-af7a-9343e2c02271.png',
+        'https://1cfresh.com/resources/images/content/solutions/sbm/slide-1.png',
+        'https://1cfresh.com/resources/images/content/solutions/sbm/slide-2.png'
+      ],
       icon: 'Building',
       features: [
         'Простой интерфейс',
@@ -173,13 +196,23 @@ export default function Products() {
                   </div>
                   
                   <div className="order-1 md:order-2">
-                    <div className="rounded-[30px] overflow-hidden">
-                      <img 
-                        src={selectedProduct.image} 
-                        alt={selectedProduct.title}
-                        className="w-full h-auto object-cover"
-                      />
-                    </div>
+                    <Carousel className="w-full">
+                      <CarouselContent>
+                        {selectedProduct.sliderImages?.map((image: string, index: number) => (
+                          <CarouselItem key={index}>
+                            <div className="rounded-[30px] overflow-hidden">
+                              <img 
+                                src={image} 
+                                alt={`${selectedProduct.title} - ${index + 1}`}
+                                className="w-full h-auto object-cover"
+                              />
+                            </div>
+                          </CarouselItem>
+                        ))}
+                      </CarouselContent>
+                      <CarouselPrevious className="left-2" />
+                      <CarouselNext className="right-2" />
+                    </Carousel>
                   </div>
                 </div>
               </>
