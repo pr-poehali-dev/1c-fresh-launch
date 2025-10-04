@@ -32,82 +32,82 @@ export default function Pricing() {
   const plans = {
     '6months': [
       {
-        name: 'Бесплатно 14 дней',
-        description: '10 баз, 5 пользователей',
-        price: '0',
+        name: 'Базовый',
+        description: 'Для малого бизнеса и ИП',
+        price: '1,724',
         features: [
-          { text: '10 баз приложений', available: true },
-          { text: '5 одновременных сеансов', available: true },
-          { text: 'До 50 ЭДО бесплатно', available: false },
-          { text: 'Доступ к 1С:ИТС', available: false },
-          { text: '1С-Отчетность', available: false },
-          { text: 'Электронная подпись', available: false }
-        ],
-        isFree: true
+          '5 пользователей',
+          '20 ГБ места для данных',
+          'Консультации специалиста',
+          'Все конфигурации 1С',
+          'Приоритетная поддержка'
+        ]
       },
       {
-        name: 'БАЗОВЫЙ',
-        description: '1 база, 2 пользователя',
-        price: '1,730',
+        name: 'Профессиональный',
+        description: 'Для среднего бизнеса',
+        price: '5,308',
         features: [
-          { text: '1 база любого приложения', available: true },
-          { text: '2 одновременных сеанса', available: true },
-          { text: 'До 50 ЭДО бесплатно', available: true },
-          { text: 'Доступ к 1С:ИТС', available: true }
+          '5 пользователей',
+          '20 ГБ места для данных',
+          'Консультации специалиста',
+          'Все конфигурации 1С',
+          'Приоритетная поддержка'
         ],
         popular: true
       },
       {
-        name: 'ПРОФ',
-        description: '10 баз, 5 пользователей',
-        price: '5,310',
+        name: 'Корпорация',
+        description: 'Для крупного бизнеса',
+        price: '8,848',
         features: [
-          { text: '10 баз приложений', available: true },
-          { text: '5 одновременных сеансов', available: true },
-          { text: 'До 100 ЭДО бесплатно', available: true },
-          { text: '1С-Отчетность', available: true },
-          { text: 'Электронная подпись', available: true }
-        ]
+          '5 пользователей',
+          '20 ГБ места для данных',
+          'Консультации специалиста',
+          'Все конфигурации 1С',
+          'Приоритетная поддержка'
+        ],
+        highlighted: true
       }
     ],
     '12months': [
       {
-        name: 'Бесплатно 14 дней',
-        description: '10 баз, 5 пользователей',
-        price: '0',
-        features: [
-          { text: '10 баз приложений', available: true },
-          { text: '5 одновременных сеансов', available: true },
-          { text: 'До 50 ЭДО бесплатно', available: false },
-          { text: 'Доступ к 1С:ИТС', available: false },
-          { text: '1С-Отчетность', available: false },
-          { text: 'Электронная подпись', available: false }
-        ],
-        isFree: true
-      },
-      {
-        name: 'БАЗОВЫЙ',
-        description: '1 база, 2 пользователя',
+        name: 'Базовый',
+        description: 'Для малого бизнеса и ИП',
         price: '1,640',
         features: [
-          { text: '1 база любого приложения', available: true },
-          { text: '2 одновременных сеанса', available: true },
-          { text: 'До 50 ЭДО бесплатно', available: true },
-          { text: 'Доступ к 1С:ИТС', available: true }
+          '5 пользователей',
+          '20 ГБ места для данных',
+          'Консультации специалиста',
+          'Все конфигурации 1С',
+          'Приоритетная поддержка'
+        ]
+      },
+      {
+        name: 'Профессиональный',
+        description: 'Для среднего бизнеса',
+        price: '4,999',
+        features: [
+          '5 пользователей',
+          '20 ГБ места для данных',
+          'Консультации специалиста',
+          'Все конфигурации 1С',
+          'Приоритетная поддержка'
         ],
         popular: true
       },
       {
-        name: 'ПРОФ',
-        description: '10 баз, 5 пользователей',
-        price: '4,999',
+        name: 'Корпорация',
+        description: 'Для крупного бизнеса',
+        price: '8,100',
         features: [
-          { text: '10 баз приложений', available: true },
-          { text: '5 одновременных сеансов', available: true },
-          { text: 'До 100 ЭДО бесплатно', available: true },
-          { text: '1С-Отчетность', available: true },
-          { text: 'Электронная подпись', available: true }
-        ]
+          '5 пользователей',
+          '20 ГБ места для данных',
+          'Консультации специалиста',
+          'Все конфигурации 1С',
+          'Приоритетная поддержка'
+        ],
+        highlighted: true
       }
     ]
   };
@@ -148,68 +148,90 @@ export default function Pricing() {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {plans[selectedPlan].map((plan, index) => (
-            <Card key={index} className={`relative overflow-hidden ${plan.popular ? 'ring-2 ring-orange-500 scale-105' : ''}`}>
-              {plan.popular && (
-                <Badge className="absolute top-4 right-4 bg-orange-500 text-white">
-                  Популярный
-                </Badge>
-              )}
-              <CardHeader className="text-center p-8">
-                <CardTitle className="font-display font-bold text-2xl text-gray-900 mb-2">
-                  Тариф {plan.name}
-                </CardTitle>
-                <CardDescription className="text-gray-600 mb-6">
-                  {plan.description}
-                </CardDescription>
-                <div className="text-center">
-                  <span className="text-4xl font-display font-bold text-gray-900">
-                    {plan.price}
-                  </span>
-                  <span className="text-gray-600 ml-2">{plan.isFree ? '' : '₽/месяц'}</span>
+        <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          {/* Left column - pricing cards */}
+          <div className="space-y-4">
+            {plans[selectedPlan].map((plan, index) => (
+              <div
+                key={index}
+                className={`relative rounded-[40px] px-8 py-6 flex items-center justify-between transition-all ${
+                  plan.highlighted
+                    ? 'bg-gradient-to-r from-orange-400 to-yellow-400 text-white shadow-xl'
+                    : plan.popular
+                    ? 'bg-white border-2 border-gray-900 shadow-lg'
+                    : 'bg-white border border-gray-300 shadow-sm hover:shadow-md'
+                }`}
+              >
+                {plan.popular && (
+                  <div className="absolute -left-3 top-1/2 -translate-y-1/2 bg-gray-900 text-white rounded-full w-10 h-10 flex items-center justify-center shadow-lg">
+                    <Icon name="Check" size={20} />
+                  </div>
+                )}
+                {plan.highlighted && (
+                  <div className="absolute -left-3 top-1/2 -translate-y-1/2 bg-white text-orange-500 rounded-full w-10 h-10 flex items-center justify-center shadow-lg">
+                    <Icon name="Star" size={20} fill="currentColor" />
+                  </div>
+                )}
+                <div className={`flex-1 ${plan.popular || plan.highlighted ? 'pl-4' : ''}`}>
+                  <h3 className={`font-bold text-xl mb-1 ${
+                    plan.highlighted ? 'text-white' : 'text-gray-900'
+                  }`}>
+                    {plan.name}
+                  </h3>
+                  <p className={`text-sm ${
+                    plan.highlighted ? 'text-white/90' : 'text-gray-600'
+                  }`}>
+                    {plan.description}
+                  </p>
                 </div>
-              </CardHeader>
-              <CardContent className="p-8 pt-0">
-                <ul className="space-y-3 mb-8">
-                  {plan.features.map((feature: any, featureIndex: number) => {
-                    const isAvailable = typeof feature === 'string' ? true : feature.available;
-                    const text = typeof feature === 'string' ? feature : feature.text;
-                    return (
-                      <li key={featureIndex} className="flex items-start">
-                        <Icon 
-                          name={isAvailable ? "Check" : "X"} 
-                          className={`${isAvailable ? 'text-green-500' : 'text-red-500'} mr-3 mt-0.5 flex-shrink-0`} 
-                          size={16} 
-                        />
-                        <span className="text-gray-600">{text}</span>
-                      </li>
-                    );
-                  })}
-                </ul>
-                <Button 
-                  onClick={() => handlePlanSelection(plan, selectedPlan)}
-                  className={`w-full ${plan.popular ? 'bg-orange-500 hover:bg-orange-600' : plan.isFree ? 'bg-green-500 hover:bg-green-600' : 'bg-gray-900 hover:bg-gray-800'} text-white rounded-[30px]`}
-                >
-                  {plan.isFree ? 'Попробовать бесплатно' : 'Выбрать план'}
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
+                <div className="text-right">
+                  <div className={`text-3xl font-bold ${
+                    plan.highlighted ? 'text-white' : 'text-gray-900'
+                  }`}>
+                    {plan.price} <span className="text-lg font-normal">₽</span>
+                  </div>
+                  <div className={`text-sm ${
+                    plan.highlighted ? 'text-white/80' : 'text-gray-500'
+                  }`}>
+                    /МЕСЯЦ
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Right column - features list */}
+          <div className="bg-white rounded-[40px] border border-gray-200 p-8 shadow-lg">
+            <h3 className="font-bold text-xl text-gray-900 mb-6">Включает:</h3>
+            <ul className="space-y-4">
+              {plans[selectedPlan][0].features.map((feature: string, index: number) => (
+                <li key={index} className="flex items-start">
+                  <div className="bg-gray-900 rounded-full w-6 h-6 flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
+                    <Icon name="Check" className="text-white" size={14} />
+                  </div>
+                  <span className="text-gray-700">{feature}</span>
+                </li>
+              ))}
+            </ul>
+            <Button
+              onClick={() => handlePlanSelection(plans[selectedPlan][1], selectedPlan)}
+              className="w-full mt-8 bg-white text-gray-900 border-2 border-gray-900 hover:bg-gray-900 hover:text-white rounded-[30px] py-6 text-lg font-semibold"
+            >
+              Оформить подписку
+            </Button>
+          </div>
         </div>
         
-        <div className="text-center mt-12">
-          <Card className="inline-block p-8 bg-gradient-to-r from-orange-500 to-indigo-500 text-white">
-            <h3 className="font-display font-bold text-xl mb-2">Нужен индивидуальный тариф?</h3>
-            <p className="mb-4">Рассчитаем оптимальное решение для вашего бизнеса</p>
-            <Button 
-              onClick={handleCustomCalculation}
-              variant="secondary" 
-              className="bg-white text-orange-500 hover:bg-gray-100 rounded-[30px]"
-            >
-              Запросить расчет
-            </Button>
-          </Card>
+        <div className="text-center mt-16">
+          <h3 className="font-bold text-2xl text-gray-900 mb-4">
+            Нужен индивидуальный тариф для<br />вашего бизнеса?
+          </h3>
+          <Button 
+            onClick={handleCustomCalculation}
+            className="bg-gray-900 text-white hover:bg-gray-800 rounded-[30px] px-8 py-6 text-lg font-semibold shadow-lg"
+          >
+            Запросить расчет →
+          </Button>
         </div>
       </div>
       
