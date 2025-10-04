@@ -4,34 +4,34 @@ import Icon from '@/components/ui/icon';
 export default function Advantages() {
   const advantagesList = [
     {
-      icon: 'Zap',
+      icon: 'https://cdn.poehali.dev/files/f39461bd-9724-47be-9362-a4631464d743.png',
       title: 'Быстрый старт',
-      description: 'Начните работу уже сегодня без закупки оборудования и лицензий'
+      description: 'Начните работу уже сегодня без закупки оборудования и лицензий. Просто выберите нужную программу 1С и начинайте работать.'
     },
     {
-      icon: 'Shield',
+      icon: 'https://cdn.poehali.dev/files/bc931099-356b-4db2-a48e-07d2e419ac72.png',
       title: 'Надежность',
-      description: 'Гарантированная доступность 99.9% и защита данных в российских ЦОД'
+      description: 'Ваши данные надежно защищены и регулярно резервируются на серверах в России. Гарантированная доступность 99.9%.'
     },
     {
-      icon: 'HeadphonesIcon',
+      icon: 'https://cdn.poehali.dev/files/4a7707c7-d3cb-4cf6-b55b-97edd0d78127.png',
       title: 'Поддержка',
-      description: 'Квалифицированная техническая поддержка 24/7 от наших специалистов'
+      description: 'Квалифицированная техническая поддержка 24/7. Наши специалисты помогут с любыми вопросами по работе сервиса.'
     },
     {
-      icon: 'RefreshCw',
+      icon: 'https://cdn.poehali.dev/files/eea063f2-7df3-4d0a-841b-b8ed9cb5f274.png',
       title: 'Всегда актуально',
-      description: 'Автоматические обновления — всегда свежие версии программ'
+      description: 'Автоматические обновления в рамках подписки. Вам не нужно думать о покупке новых версий — всегда всё самое свежее.'
     },
     {
-      icon: 'Globe',
-      title: 'Доступно везде',
-      description: 'Работайте из любого места с любого устройства через браузер'
+      icon: 'https://cdn.poehali.dev/files/d1f82b9b-5429-4b0b-acf8-42c1a0cd5091.png',
+      title: 'Доступ откуда угодно',
+      description: 'Работайте с 1С из офиса, дома или в командировке с любого устройства. Нужен только интернет и браузер.'
     },
     {
-      icon: 'DollarSign',
+      icon: 'https://cdn.poehali.dev/files/96e91cc7-46f1-4b66-b4f9-f8ccf4bbf24e.png',
       title: 'Экономия бюджета',
-      description: 'Оплачивайте только нужный функционал без затрат на инфраструктуру'
+      description: 'Не тратьте деньги на серверы, ИТ-специалистов и лицензии. Оплачивайте только тот функционал, который вам нужен.'
     }
   ];
 
@@ -47,17 +47,15 @@ export default function Advantages() {
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-16 gap-y-12">
           {advantagesList.map((item, index) => (
-            <Card key={index} className="p-6 hover:shadow-lg transition-all duration-300 animate-fade-in" style={{animationDelay: `${index * 100}ms`}}>
-              <CardContent className="p-0">
-                <div className="bg-gradient-to-br from-orange-500 to-indigo-500 rounded-2xl w-14 h-14 flex items-center justify-center mb-4">
-                  <Icon name={item.icon} className="text-white" size={28} />
-                </div>
-                <h3 className="font-display font-semibold text-xl text-gray-900 mb-3">{item.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{item.description}</p>
-              </CardContent>
-            </Card>
+            <div key={index} className="text-center animate-fade-in" style={{animationDelay: `${index * 100}ms`}}>
+              <div className="bg-gray-100 rounded-full w-20 h-20 flex items-center justify-center mb-6 mx-auto">
+                <img src={item.icon} alt={item.title} className="w-12 h-12 object-contain" />
+              </div>
+              <h3 className="font-bold text-xl text-gray-900 mb-3">{item.title}</h3>
+              <p className="text-gray-600 leading-relaxed">{item.description}</p>
+            </div>
           ))}
         </div>
       </div>
