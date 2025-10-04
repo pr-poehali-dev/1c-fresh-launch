@@ -87,19 +87,14 @@ export default function Advantages() {
         
         {/* Desktop version */}
         <div className="hidden lg:grid lg:grid-cols-2 gap-8 items-center">
-          {/* Image slider on the left */}
+          {/* Static image on the left */}
           <div className="order-2 lg:order-1 overflow-hidden" style={{ borderTopRightRadius: '30px', borderBottomRightRadius: '30px' }}>
             <div className="relative w-full aspect-[4/3]">
-              {advantagesList.map((item, index) => (
-                <img
-                  key={index}
-                  src={item.image}
-                  alt={item.title}
-                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
-                    index === activeIndex ? 'opacity-100' : 'opacity-0'
-                  }`}
-                />
-              ))}
+              <img
+                src={advantagesList[0].image}
+                alt="1C Fresh"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
 
@@ -108,16 +103,15 @@ export default function Advantages() {
             {advantagesList.map((item, index) => (
               <div
                 key={index}
-                onMouseEnter={() => setActiveIndex(index)}
-                className={`text-center p-4 rounded-2xl transition-all duration-300 cursor-pointer ${
-                  index === activeIndex ? 'bg-gray-50 shadow-md' : 'hover:bg-gray-50'
-                }`}
+                className="flex items-start gap-4 p-4 rounded-2xl transition-all duration-300 hover:bg-gray-50"
               >
-                <div className="bg-gray-100 rounded-full w-16 h-16 flex items-center justify-center mb-4 mx-auto">
-                  <img src={item.icon} alt={item.title} className="w-10 h-10 object-contain" />
+                <div className="bg-gray-100 rounded-full w-12 h-12 flex items-center justify-center flex-shrink-0">
+                  <img src={item.icon} alt={item.title} className="w-7 h-7 object-contain" />
                 </div>
-                <h3 className="font-bold text-lg text-gray-900 mb-2">{item.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
+                <div className="flex-1 text-left">
+                  <h3 className="font-bold text-lg text-gray-900 mb-2">{item.title}</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">{item.description}</p>
+                </div>
               </div>
             ))}
           </div>
