@@ -101,7 +101,7 @@ export default function FAQ() {
                   value={`item-${index}`}
                   className="border-b border-gray-200 pb-4"
                 >
-                  <AccordionTrigger className="text-left font-semibold text-lg hover:no-underline group flex items-start justify-between gap-4">
+                  <AccordionTrigger className="text-left font-semibold text-lg hover:no-underline group flex items-start justify-between gap-4 [&>svg]:hidden">
                     <span className="flex-1">{faq.question}</span>
                     <div className="flex-shrink-0 w-10 h-10 rounded-full bg-yellow-400 flex items-center justify-center group-data-[state=open]:rotate-180 transition-transform">
                       <Icon name="Minus" className="text-white" size={20} />
