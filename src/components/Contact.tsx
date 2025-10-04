@@ -69,7 +69,7 @@ export default function Contact() {
   return (
     <section id="contact" className="py-20 bg-white">
       <div className="max-w-[1980px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Left side - Form */}
           <div>
             <h2 className="text-4xl font-display font-bold text-gray-900 mb-4 uppercase">
@@ -116,165 +116,161 @@ export default function Contact() {
             )}
           </div>
 
-          {/* Right side - Decorative Gradient */}
-          <div className="relative h-[600px] rounded-[60px] overflow-hidden bg-gradient-to-br from-yellow-300 via-orange-400 to-yellow-500">
+          {/* Right side - Tabs with gradient background */}
+          <div className="relative rounded-[60px] overflow-hidden bg-gradient-to-br from-yellow-300 via-orange-400 to-yellow-500 p-8">
             {/* Decorative gradient blobs */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full">
+            <div className="absolute inset-0 pointer-events-none">
               <div className="absolute top-[10%] right-[15%] w-72 h-72 rounded-full bg-gradient-to-br from-red-400 to-orange-500 opacity-80 blur-2xl"></div>
               <div className="absolute bottom-[15%] left-[20%] w-96 h-96 rounded-full bg-gradient-to-br from-yellow-400 to-orange-400 opacity-70 blur-3xl"></div>
               <div className="absolute top-[40%] right-[25%] w-64 h-64 rounded-full bg-gradient-to-br from-orange-300 to-red-400 opacity-60 blur-2xl"></div>
             </div>
-          </div>
-        </div>
 
-        {/* Tabs with contact info and company details */}
-        <div className="space-y-8">
-          {/* Tabs */}
-          <div className="flex gap-4 border-b border-gray-200">
-            <button
-              onClick={() => setActiveTab('contact')}
-              className={`pb-3 px-4 font-semibold transition-colors relative ${
-                activeTab === 'contact'
-                  ? 'text-orange-500'
-                  : 'text-gray-600 hover:text-gray-900'
-              }`}
-            >
-              Контактная информация
+            {/* Content on top of gradient */}
+            <div className="relative z-10 space-y-6">
+              {/* Tabs */}
+              <div className="flex gap-4 border-b border-white/30">
+                <button
+                  onClick={() => setActiveTab('contact')}
+                  className={`pb-3 px-4 font-semibold transition-colors relative ${
+                    activeTab === 'contact'
+                      ? 'text-white'
+                      : 'text-white/70 hover:text-white'
+                  }`}
+                >
+                  Контактная информация
+                  {activeTab === 'contact' && (
+                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-white" />
+                  )}
+                </button>
+                <button
+                  onClick={() => setActiveTab('company')}
+                  className={`pb-3 px-4 font-semibold transition-colors relative ${
+                    activeTab === 'company'
+                      ? 'text-white'
+                      : 'text-white/70 hover:text-white'
+                  }`}
+                >
+                  Реквизиты компании
+                  {activeTab === 'company' && (
+                    <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-white" />
+                  )}
+                </button>
+              </div>
+
+              {/* Contact Info Tab */}
               {activeTab === 'contact' && (
-                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-orange-500" />
+                <div className="space-y-6 animate-in fade-in duration-300">
+                  <div className="flex items-start text-white">
+                    <Icon
+                      name="Phone"
+                      className="mr-3 mt-1"
+                      size={20}
+                    />
+                    <div>
+                      <p className="font-semibold">Телефон</p>
+                      <p className="text-white/90">+7 (342) 270‒00‒01</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start text-white">
+                    <Icon
+                      name="Mail"
+                      className="mr-3 mt-1"
+                      size={20}
+                    />
+                    <div>
+                      <p className="font-semibold">Email</p>
+                      <p className="text-white/90">ivanickiy@centerai.tech</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start text-white">
+                    <Icon
+                      name="Clock"
+                      className="mr-3 mt-1"
+                      size={20}
+                    />
+                    <div>
+                      <p className="font-semibold">Режим работы</p>
+                      <p className="text-white/90">
+                        Пн-Пт: 9:00-18:00
+                        <br />
+                        Поддержка: 24/7
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start text-white">
+                    <Icon
+                      name="MapPin"
+                      className="mr-3 mt-1"
+                      size={20}
+                    />
+                    <div>
+                      <p className="font-semibold">Адрес</p>
+                      <p className="text-white/90">
+                        614007, Пермский край, город Пермь,
+                        <br />
+                        ул. Революции, д. 14, кв. 57
+                      </p>
+                    </div>
+                  </div>
+                </div>
               )}
-            </button>
-            <button
-              onClick={() => setActiveTab('company')}
-              className={`pb-3 px-4 font-semibold transition-colors relative ${
-                activeTab === 'company'
-                  ? 'text-orange-500'
-                  : 'text-gray-600 hover:text-gray-900'
-              }`}
-            >
-              Реквизиты компании
+
+              {/* Company Info Tab */}
               {activeTab === 'company' && (
-                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-orange-500" />
+                <div className="space-y-6 animate-in fade-in duration-300">
+                  <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                    <h3 className="font-display font-bold text-lg text-white flex items-center mb-4">
+                      <Icon name="Building" className="mr-3" size={20} />
+                      Юридическая информация
+                    </h3>
+                    <div className="space-y-3 text-white">
+                      <div>
+                        <p className="text-sm text-white/70">Полное наименование</p>
+                        <p className="font-medium">Данные будут добавлены</p>
+                      </div>
+                      <div>
+                        <p className="text-sm text-white/70">ИНН</p>
+                        <p className="font-medium">Данные будут добавлены</p>
+                      </div>
+                      <div>
+                        <p className="text-sm text-white/70">КПП</p>
+                        <p className="font-medium">Данные будут добавлены</p>
+                      </div>
+                      <div>
+                        <p className="text-sm text-white/70">ОГРН</p>
+                        <p className="font-medium">Данные будут добавлены</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                    <h3 className="font-display font-bold text-lg text-white flex items-center mb-4">
+                      <Icon name="CreditCard" className="mr-3" size={20} />
+                      Банковские реквизиты
+                    </h3>
+                    <div className="space-y-3 text-white">
+                      <div>
+                        <p className="text-sm text-white/70">Расчетный счет</p>
+                        <p className="font-medium">Данные будут добавлены</p>
+                      </div>
+                      <div>
+                        <p className="text-sm text-white/70">Банк</p>
+                        <p className="font-medium">Данные будут добавлены</p>
+                      </div>
+                      <div>
+                        <p className="text-sm text-white/70">БИК</p>
+                        <p className="font-medium">Данные будут добавлены</p>
+                      </div>
+                      <div>
+                        <p className="text-sm text-white/70">Корр. счет</p>
+                        <p className="font-medium">Данные будут добавлены</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               )}
-            </button>
+            </div>
           </div>
-
-          {/* Contact Info Tab */}
-          {activeTab === 'contact' && (
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 animate-in fade-in duration-300">
-              <div className="flex items-start">
-                <Icon
-                  name="Phone"
-                  className="text-orange-500 mr-3 mt-1"
-                  size={20}
-                />
-                <div>
-                  <p className="font-semibold text-gray-900">Телефон</p>
-                  <p className="text-gray-600">+7 (342) 270‒00‒01</p>
-                </div>
-              </div>
-              <div className="flex items-start">
-                <Icon
-                  name="Mail"
-                  className="text-orange-500 mr-3 mt-1"
-                  size={20}
-                />
-                <div>
-                  <p className="font-semibold text-gray-900">Email</p>
-                  <p className="text-gray-600">ivanickiy@centerai.tech</p>
-                </div>
-              </div>
-              <div className="flex items-start">
-                <Icon
-                  name="Clock"
-                  className="text-orange-500 mr-3 mt-1"
-                  size={20}
-                />
-                <div>
-                  <p className="font-semibold text-gray-900">Режим работы</p>
-                  <p className="text-gray-600">
-                    Пн-Пт: 9:00-18:00
-                    <br />
-                    Поддержка: 24/7
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start">
-                <Icon
-                  name="MapPin"
-                  className="text-orange-500 mr-3 mt-1"
-                  size={20}
-                />
-                <div>
-                  <p className="font-semibold text-gray-900">Адрес</p>
-                  <p className="text-gray-600">
-                    614007, Пермский край, город Пермь,
-                    <br />
-                    ул. Революции, д. 14, кв. 57
-                  </p>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Company Info Tab */}
-          {activeTab === 'company' && (
-            <div className="grid md:grid-cols-2 gap-8 animate-in fade-in duration-300">
-              <Card>
-                <CardHeader>
-                  <CardTitle className="font-display font-bold text-lg text-gray-900 flex items-center">
-                    <Icon name="Building" className="text-orange-500 mr-3" size={20} />
-                    Юридическая информация
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  <div>
-                    <p className="text-sm text-gray-500">Полное наименование</p>
-                    <p className="text-gray-900 font-medium">Данные будут добавлены</p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-500">ИНН</p>
-                    <p className="text-gray-900 font-medium">Данные будут добавлены</p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-500">КПП</p>
-                    <p className="text-gray-900 font-medium">Данные будут добавлены</p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-500">ОГРН</p>
-                    <p className="text-gray-900 font-medium">Данные будут добавлены</p>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle className="font-display font-bold text-lg text-gray-900 flex items-center">
-                    <Icon name="CreditCard" className="text-orange-500 mr-3" size={20} />
-                    Банковские реквизиты
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  <div>
-                    <p className="text-sm text-gray-500">Расчетный счет</p>
-                    <p className="text-gray-900 font-medium">Данные будут добавлены</p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-500">Банк</p>
-                    <p className="text-gray-900 font-medium">Данные будут добавлены</p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-500">БИК</p>
-                    <p className="text-gray-900 font-medium">Данные будут добавлены</p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-500">Корр. счет</p>
-                    <p className="text-gray-900 font-medium">Данные будут добавлены</p>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          )}
         </div>
       </div>
       
