@@ -6,9 +6,9 @@ export default function Footer() {
           {/* Logo */}
           <div className="flex items-center">
             <img 
-              src="https://cdn.poehali.dev/files/60f6e4ba-6cd7-4a2f-b901-af03c01a29c0.png" 
-              alt="1C Logo" 
-              className="h-12"
+              src="https://cdn.poehali.dev/files/9cdb632b-9883-4574-85fb-43d2feb4beac.png" 
+              alt="ЦАВ - Центр Автоматизации и Внедрений" 
+              className="h-12 w-auto"
             />
           </div>
           
