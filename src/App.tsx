@@ -7,6 +7,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useTelegramWebApp } from "@/hooks/useTelegramWebApp";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import TelegramProducts from "./pages/TelegramProducts";
+import TelegramPricing from "./pages/TelegramPricing";
+import TelegramFAQ from "./pages/TelegramFAQ";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +32,9 @@ const App = () => {
           >
             <Routes>
               <Route path="/" element={<Index />} />
+              <Route path="/telegram/products" element={<TelegramProducts />} />
+              <Route path="/telegram/pricing" element={<TelegramPricing />} />
+              <Route path="/telegram/faq" element={<TelegramFAQ />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
