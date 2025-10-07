@@ -10,6 +10,8 @@ import NotFound from "./pages/NotFound";
 import TelegramProducts from "./pages/TelegramProducts";
 import TelegramPricing from "./pages/TelegramPricing";
 import TelegramFAQ from "./pages/TelegramFAQ";
+import TermsOfService from "./pages/TermsOfService";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 const queryClient = new QueryClient();
 
@@ -35,6 +37,8 @@ const App = () => {
               <Route path="/telegram/products" element={<TelegramProducts />} />
               <Route path="/telegram/pricing" element={<TelegramPricing />} />
               <Route path="/telegram/faq" element={<TelegramFAQ />} />
+              <Route path="/terms" element={<TermsOfService />} />
+              <Route path="/privacy" element={<PrivacyPolicy />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

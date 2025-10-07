@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export default function Footer() {
   return (
     <footer className="bg-[#2b2b2b] text-white py-6">
@@ -12,9 +14,18 @@ export default function Footer() {
             />
           </div>
           
-          {/* Copyright */}
+          {/* Copyright and Links */}
           <div className="text-center text-gray-400 text-sm">
-            © 2025 ООО "МОЛОТОВ ТРАСТ". Официальный партнер 1C Fresh. Все права защищены.
+            <p className="mb-2">© 2025 ООО "МОЛОТОВ ТРАСТ". Официальный партнер 1C Fresh. Все права защищены.</p>
+            <div className="flex gap-4 justify-center">
+              <Link to="/terms" className="hover:text-white transition-colors">
+                Пользовательское соглашение
+              </Link>
+              <span>•</span>
+              <Link to="/privacy" className="hover:text-white transition-colors">
+                Политика конфиденциальности
+              </Link>
+            </div>
           </div>
           
           {/* Social Icons */}
