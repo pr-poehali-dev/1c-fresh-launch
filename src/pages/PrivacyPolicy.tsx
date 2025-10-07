@@ -169,7 +169,8 @@ export default function PrivacyPolicy() {
               <p className="text-sm mt-4">
                 Телефон/WhatsApp: <a href="tel:+79129800084" className="text-orange-500 hover:underline">+7 (912) 980-00-84</a><br />
                 Telegram: <a href="https://t.me/cai1c_bot" target="_blank" rel="noopener noreferrer" className="text-orange-500 hover:underline">@cai1c_bot</a><br />
-                Время работы: круглосуточно
+                Техподдержка: <a href="tel:88003337227" className="text-orange-500 hover:underline">8 (800) 333-72-27</a> (круглосуточно)<br />
+                Время работы офиса: с 9:00 до 18:00, Пн-Пт
               </p>
             </div>
           </section>
