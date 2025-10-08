@@ -99,10 +99,6 @@ export default function TelegramContactForm({
         setFormData({ name: '', phone: '', message: '' });
         setAgreedToPolicy(false);
         onSuccess?.();
-        
-        if (telegramWebApp.isInTelegram) {
-          telegramWebApp.showAlert('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.');
-        }
       } else {
         throw new Error(result.error || 'Ошибка отправки');
       }
