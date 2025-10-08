@@ -6,7 +6,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
-import { telegramBot } from '@/services/telegramBot';
+
 import { useTelegramWebApp } from '@/hooks/useTelegramWebApp';
 import Icon from '@/components/ui/icon';
 
@@ -74,14 +74,22 @@ export default function TelegramContactForm({
     telegramWebApp.hapticFeedback('light');
 
     try {
-      const result = await telegramBot.sendContactForm({
-        name: formData.name,
-        phone: formData.phone,
-        message: formData.message,
-        source: telegramWebApp.isInTelegram ? 'Telegram Mini App' : 'Веб-сайт'
+      const response = await fetch('https://functions.poehali.dev/09d20db6-66dc-4441-860c-48bebddba56c', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          phone: formData.phone,
+          message: formData.message,
+          source: telegramWebApp.isInTelegram ? 'Telegram Mini App' : 'Веб-сайт'
+        }),
       });
 
-      if (result.success) {
+      const result = await response.json();
+
+      if (response.ok && result.success) {
         telegramWebApp.hapticFeedback('success');
         toast({
           title: "Заявка отправлена!",
@@ -89,9 +97,9 @@ export default function TelegramContactForm({
         });
         
         setFormData({ name: '', phone: '', message: '' });
+        setAgreedToPolicy(false);
         onSuccess?.();
         
-        // Показываем уведомление в Telegram
         if (telegramWebApp.isInTelegram) {
           telegramWebApp.showAlert('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.');
         }
