@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -28,6 +29,7 @@ export default function TelegramContactForm({
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [agreedToPolicy, setAgreedToPolicy] = useState(false);
   const { toast } = useToast();
   const telegramWebApp = useTelegramWebApp();
 
@@ -54,6 +56,15 @@ export default function TelegramContactForm({
       toast({
         title: "Заполните обязательные поля",
         description: "Имя и телефон обязательны для заполнения",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (!agreedToPolicy) {
+      toast({
+        title: "Требуется согласие",
+        description: "Необходимо согласие на обработку персональных данных",
         variant: "destructive",
       });
       return;
@@ -154,6 +165,27 @@ export default function TelegramContactForm({
               placeholder="Расскажите о вашем проекте..."
               rows={3}
             />
+          </div>
+
+          <div className="flex items-start gap-2">
+            <input
+              type="checkbox"
+              id="privacy-policy"
+              checked={agreedToPolicy}
+              onChange={(e) => setAgreedToPolicy(e.target.checked)}
+              className="mt-1 h-4 w-4 rounded border-gray-300 text-orange-500 focus:ring-orange-500"
+              required
+            />
+            <label htmlFor="privacy-policy" className="text-sm text-gray-600">
+              Я согласен с{' '}
+              <Link to="/privacy" className="text-orange-500 hover:underline" target="_blank">
+                политикой конфиденциальности
+              </Link>
+              {' '}и{' '}
+              <Link to="/terms" className="text-orange-500 hover:underline" target="_blank">
+                пользовательским соглашением
+              </Link>
+            </label>
           </div>
           
           <Button 
