@@ -1,0 +1,49 @@
+{
+  "tests": [
+    {
+      "name": "Create deal with full data",
+      "method": "POST",
+      "body": {
+        "name": "Иван Петров",
+        "phone": "+79001234567",
+        "email": "ivan@example.com",
+        "company": "ООО Тест",
+        "message": "Интересует разработка сайта",
+        "service": "Разработка сайта",
+        "source": "Форма заказа"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": true
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Create deal with minimal data",
+      "method": "POST",
+      "body": {
+        "name": "Тест",
+        "phone": "+79009999999",
+        "service": "Консультация",
+        "source": "Форма контакта"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": true
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Reject request without phone",
+      "method": "POST",
+      "body": {
+        "name": "Иван",
+        "email": "test@test.com"
+      },
+      "expectedStatus": 400,
+      "expectedBody": {
+        "error": "Name and phone are required"
+      }
+    }
+  ]
+}

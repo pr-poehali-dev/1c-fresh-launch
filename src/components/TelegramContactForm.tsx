@@ -74,22 +74,31 @@ export default function TelegramContactForm({
     telegramWebApp.hapticFeedback('light');
 
     try {
-      const response = await fetch('https://functions.poehali.dev/09d20db6-66dc-4441-860c-48bebddba56c', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          phone: formData.phone,
-          message: formData.message,
-          source: telegramWebApp.isInTelegram ? 'Telegram Mini App' : 'Веб-сайт'
+      const requestData = {
+        name: formData.name,
+        phone: formData.phone,
+        message: formData.message,
+        service: 'Обратный звонок',
+        source: telegramWebApp.isInTelegram ? 'Telegram Mini App' : 'Веб-сайт'
+      };
+
+      const [telegramResponse, bitrixResponse] = await Promise.all([
+        fetch('https://functions.poehali.dev/09d20db6-66dc-4441-860c-48bebddba56c', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(requestData),
         }),
-      });
+        fetch('https://functions.poehali.dev/c061e2f0-8081-472e-98a2-107053b0c16f', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(requestData),
+        })
+      ]);
 
-      const result = await response.json();
+      const telegramResult = await telegramResponse.json();
+      const bitrixResult = await bitrixResponse.json();
 
-      if (response.ok && result.success) {
+      if (telegramResponse.ok && telegramResult.success) {
         telegramWebApp.hapticFeedback('success');
         toast({
           title: "Заявка отправлена!",
@@ -100,7 +109,7 @@ export default function TelegramContactForm({
         setAgreedToPolicy(false);
         onSuccess?.();
       } else {
-        throw new Error(result.error || 'Ошибка отправки');
+        throw new Error(telegramResult.error || 'Ошибка отправки');
       }
     } catch (error) {
       telegramWebApp.hapticFeedback('error');

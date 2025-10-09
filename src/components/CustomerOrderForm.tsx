@@ -46,26 +46,37 @@ export default function CustomerOrderForm({
 
     setIsLoading(true);
     try {
-      const response = await fetch('https://functions.poehali.dev/09d20db6-66dc-4441-860c-48bebddba56c', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          phone: formData.phone,
-          message: `🎯 Услуга: ${serviceType}\n${price ? `💰 Стоимость: ${price}\n` : ''}${formData.email ? `✉️ Email: ${formData.email}\n` : ''}${formData.company ? `🏢 Компания: ${formData.company}\n` : ''}${serviceDetails ? `📋 Детали: ${serviceDetails}\n` : ''}${formData.message ? `💬 Дополнительно: ${formData.message}` : ''}`,
-          source: 'Форма заказа'
+      const requestData = {
+        name: formData.name,
+        phone: formData.phone,
+        email: formData.email,
+        company: formData.company,
+        message: `🎯 Услуга: ${serviceType}\n${price ? `💰 Стоимость: ${price}\n` : ''}${serviceDetails ? `📋 Детали: ${serviceDetails}\n` : ''}${formData.message ? `💬 Дополнительно: ${formData.message}` : ''}`,
+        service: serviceType,
+        source: 'Форма заказа'
+      };
+
+      const [telegramResponse, bitrixResponse] = await Promise.all([
+        fetch('https://functions.poehali.dev/09d20db6-66dc-4441-860c-48bebddba56c', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(requestData),
         }),
-      });
+        fetch('https://functions.poehali.dev/c061e2f0-8081-472e-98a2-107053b0c16f', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(requestData),
+        })
+      ]);
 
-      const result = await response.json();
+      const telegramResult = await telegramResponse.json();
+      const bitrixResult = await bitrixResponse.json();
 
-      if (response.ok && result.success) {
+      if (telegramResponse.ok && telegramResult.success) {
         toast.success('Заявка отправлена! Мы свяжемся с вами в ближайшее время.');
         onClose();
       } else {
-        toast.error(`Ошибка: ${result.error || 'Не удалось отправить заявку'}`);
+        toast.error(`Ошибка: ${telegramResult.error || 'Не удалось отправить заявку'}`);
       }
     } catch (error) {
       console.error('Order submission error:', error);
