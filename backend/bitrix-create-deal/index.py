@@ -48,6 +48,7 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     message = body_data.get('message', '')
     service = body_data.get('service', 'Не указано')
     source = body_data.get('source', 'Сайт')
+    price = body_data.get('price', '')
     
     if not name or not phone:
         return {
@@ -83,6 +84,15 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
             'CONTACT_ID': None,
         }
     }
+    
+    if price:
+        price_clean = price.replace('₽', '').replace('руб', '').replace(' ', '').replace('от', '').strip()
+        try:
+            price_numeric = float(price_clean)
+            deal_data['fields']['OPPORTUNITY'] = price_numeric
+            deal_data['fields']['CURRENCY_ID'] = 'RUB'
+        except ValueError:
+            pass
     
     contact_data = {
         'fields': {

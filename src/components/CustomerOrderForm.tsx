@@ -53,6 +53,7 @@ export default function CustomerOrderForm({
         company: formData.company,
         message: `🎯 Услуга: ${serviceType}\n${price ? `💰 Стоимость: ${price}\n` : ''}${serviceDetails ? `📋 Детали: ${serviceDetails}\n` : ''}${formData.message ? `💬 Дополнительно: ${formData.message}` : ''}`,
         service: serviceType,
+        price: price || '',
         source: 'Форма заказа'
       };
 
