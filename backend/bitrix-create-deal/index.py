@@ -50,6 +50,8 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     source = body_data.get('source', 'Сайт')
     price = body_data.get('price', '')
     
+    print(f"📊 Received data: name={name}, phone={phone}, service={service}, price={price}")
+    
     if not name or not phone:
         return {
             'statusCode': 400,
@@ -87,12 +89,14 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     
     if price:
         price_clean = price.replace('₽', '').replace('руб', '').replace(' ', '').replace('от', '').strip()
+        print(f"💰 Processing price: original={price}, cleaned={price_clean}")
         try:
             price_numeric = float(price_clean)
             deal_data['fields']['OPPORTUNITY'] = price_numeric
             deal_data['fields']['CURRENCY_ID'] = 'RUB'
-        except ValueError:
-            pass
+            print(f"✅ Price set successfully: {price_numeric} RUB")
+        except ValueError as e:
+            print(f"❌ Failed to parse price: {e}")
     
     contact_data = {
         'fields': {
