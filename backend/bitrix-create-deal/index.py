@@ -79,7 +79,7 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
         'fields': {
             'TITLE': deal_title,
             'SOURCE_ID': 'WEB',
-            'SOURCE_DESCRIPTION': source,
+            'SOURCE_DESCRIPTION': '1С-FRESH-Lending',
             'COMMENTS': message,
             'CONTACT_ID': None,
         }
