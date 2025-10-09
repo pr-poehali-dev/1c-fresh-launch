@@ -88,7 +88,8 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     }
     
     if price:
-        price_clean = price.replace('₽', '').replace('руб', '').replace(' ', '').replace('от', '').strip()
+        price_clean = price.replace('₽', '').replace('руб', '').replace('от', '').replace('/месяц', '').strip()
+        price_clean = price_clean.replace(',', '').replace(' ', '')
         print(f"💰 Processing price: original={price}, cleaned={price_clean}")
         try:
             price_numeric = float(price_clean)
